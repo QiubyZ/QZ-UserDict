@@ -1,0 +1,65 @@
+{
+  "allFiles": [
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/CharLenght/app/src/main/java/qz/charlenght/MainActivity.java",
+      "selection": {
+        "end": {
+          "column": 0,
+          "index": 1911,
+          "line": 52
+        },
+        "start": {
+          "column": 0,
+          "index": 1911,
+          "line": 52
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/CharLenght/app/src/main/java/qz/charlenght/Model/TextItems.java",
+      "selection": {
+        "end": {
+          "column": 35,
+          "index": 298,
+          "line": 12
+        },
+        "start": {
+          "column": 35,
+          "index": 298,
+          "line": 12
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/CharLenght/app/src/main/java/qz/charlenght/ViewModel/mAdpView.java",
+      "selection": {
+        "end": {
+          "column": 8,
+          "index": 905,
+          "line": 34
+        },
+        "start": {
+          "column": 8,
+          "index": 905,
+          "line": 34
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/CharLenght/app/src/main/res/layout/costum_view_textitem.xml",
+      "selection": {
+        "end": {
+          "column": 19,
+          "index": 968,
+          "line": 28
+        },
+        "start": {
+          "column": 19,
+          "index": 968,
+          "line": 28
+        }
+      }
+    }
+  ],
+  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/CharLenght/app/src/main/java/qz/charlenght/MainActivity.java"
+}
