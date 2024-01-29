@@ -19,14 +19,14 @@
       "file": "/storage/emulated/0/AndroidIDEProjects/CharLenght/app/src/main/res/layout/activity_main.xml",
       "selection": {
         "end": {
-          "column": 43,
-          "index": 389,
-          "line": 9
+          "column": 15,
+          "index": 1577,
+          "line": 49
         },
         "start": {
-          "column": 43,
-          "index": 389,
-          "line": 9
+          "column": 15,
+          "index": 1577,
+          "line": 49
         }
       }
     },
@@ -46,5 +46,5 @@
       }
     }
   ],
-  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/CharLenght/app/src/main/java/qz/charlenght/MainActivity.java"
+  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/CharLenght/app/src/main/res/layout/activity_main.xml"
 }

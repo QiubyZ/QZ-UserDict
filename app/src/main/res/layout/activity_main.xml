@@ -5,13 +5,12 @@
      android:layout_height="match_parent"
      android:layout_width="match_parent"
      android:orientation="vertical">
-    
+
     <androidx.recyclerview.widget.RecyclerView
-       android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:id="@+id/recyclerView"
-    />
-    
+         android:layout_height="wrap_content"
+         android:layout_width="match_parent"
+         android:id="@+id/recyclerView" />
+
     <EditText
          android:layout_height="wrap_content"
          android:layout_width="match_parent"
@@ -19,7 +18,14 @@
          android:hint="Target Angka"
          android:text="45"
          android:id="@+id/tergetAngka" />
-    
+
+    <EditText
+         android:layout_height="wrap_content"
+         android:layout_width="match_parent"
+         android:gravity="left|top"
+         android:hint="Keys"
+         android:id="@+id/keys" />
+
     <EditText
          android:layout_height="wrap_content"
          android:layout_width="match_parent"
@@ -33,11 +39,12 @@
          android:layout_gravity="left">
 
         <TextView
-             android:inputType="number"
              android:layout_height="wrap_content"
              android:layout_width="wrap_content"
+             android:inputType="number"
              android:text="panjang"
              android:id="@+id/panjang" />
+
     </LinearLayout>
 
 </LinearLayout>
