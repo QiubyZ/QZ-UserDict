@@ -4,44 +4,29 @@
       "file": "/storage/emulated/0/AndroidIDEProjects/CharLenght/app/src/main/java/qz/charlenght/MainActivity.java",
       "selection": {
         "end": {
-          "column": 0,
-          "index": 1911,
-          "line": 52
+          "column": 10,
+          "index": 1094,
+          "line": 31
         },
         "start": {
-          "column": 0,
-          "index": 1911,
-          "line": 52
+          "column": 10,
+          "index": 1094,
+          "line": 31
         }
       }
     },
     {
-      "file": "/storage/emulated/0/AndroidIDEProjects/CharLenght/app/src/main/java/qz/charlenght/Model/TextItems.java",
+      "file": "/storage/emulated/0/AndroidIDEProjects/CharLenght/app/src/main/res/layout/activity_main.xml",
       "selection": {
         "end": {
-          "column": 35,
-          "index": 298,
-          "line": 12
+          "column": 43,
+          "index": 389,
+          "line": 9
         },
         "start": {
-          "column": 35,
-          "index": 298,
-          "line": 12
-        }
-      }
-    },
-    {
-      "file": "/storage/emulated/0/AndroidIDEProjects/CharLenght/app/src/main/java/qz/charlenght/ViewModel/mAdpView.java",
-      "selection": {
-        "end": {
-          "column": 8,
-          "index": 905,
-          "line": 34
-        },
-        "start": {
-          "column": 8,
-          "index": 905,
-          "line": 34
+          "column": 43,
+          "index": 389,
+          "line": 9
         }
       }
     },
@@ -49,14 +34,14 @@
       "file": "/storage/emulated/0/AndroidIDEProjects/CharLenght/app/src/main/res/layout/costum_view_textitem.xml",
       "selection": {
         "end": {
-          "column": 19,
-          "index": 968,
-          "line": 28
+          "column": 4,
+          "index": 295,
+          "line": 7
         },
         "start": {
-          "column": 19,
-          "index": 968,
-          "line": 28
+          "column": 4,
+          "index": 295,
+          "line": 7
         }
       }
     }

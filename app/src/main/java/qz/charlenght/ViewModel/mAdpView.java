@@ -31,7 +31,11 @@ public class mAdpView extends RecyclerView.Adapter<mAdpView.VH> {
     }
 
     @Override
-    public void onBindViewHolder(mAdpView.VH arg0, int arg1) {
+    public void onBindViewHolder(mAdpView.VH holder, int arg1) {
+        TextItems item = items.get(arg1);
+        
+        holder.bind.textitem.setText(item.getText());
+        holder.bind.lengtext.setText(String.valueOf(item.getTextCount()));
         
     }
 

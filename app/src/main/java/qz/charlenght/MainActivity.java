@@ -6,12 +6,17 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import java.util.ArrayList;
+import qz.charlenght.Model.TextItems;
+import qz.charlenght.ViewModel.mAdpView;
 import qz.charlenght.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
-    private ActivityMainBinding binding;
-    private int panjang = 0;
-
+    ActivityMainBinding binding;
+    ArrayList<TextItems> textitem;
+    mAdpView adapter;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,11 +26,19 @@ public class MainActivity extends AppCompatActivity {
 
         // set content view to binding's root
         setContentView(binding.getRoot());
+        textitem = new ArrayList<TextItems>();
+//        textitem.add(new TextItems("Meki ayam", 10));
+//        textitem.add(new TextItems("Meki ayam", 10));
+//        
+        adapter = new mAdpView(textitem);
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        binding.recyclerView.setAdapter(adapter);
         
         String TargetAngka = binding.tergetAngka.getText().toString();
         if(binding.tergetAngka.getText().toString().length() < -1){
             binding.tergetAngka.setText(45);
         }
+        
         binding.checkleng.addTextChangedListener(
                 new TextWatcher() {
 
