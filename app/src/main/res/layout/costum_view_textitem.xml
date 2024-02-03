@@ -18,7 +18,7 @@
         android:layout_width="50dp"
         android:layout_weight="1"
         android:text="4y5"
-        android:id="@+id/lengtext" />
-
+        android:id="@+id/freq" />
+        
 
 </LinearLayout>

@@ -1,17 +1,14 @@
 package qz.charlenght.Model;
+
 import qz.charlenght.Model.TextItems;
 
 public class TextItems {
     public String Text;
-    public int TextCount;
-    
-    public TextItems(){
-        
-    }
-    public TextItems(String text, int TextCount){
-        this.Text = text;
-        this.TextCount = TextCount;
-    }
+    public String Short;
+    public String frek;
+
+    public TextItems() {}
+
     public String getText() {
         return this.Text;
     }
@@ -20,11 +17,20 @@ public class TextItems {
         this.Text = Text;
     }
 
-    public int getTextCount() {
-        return this.TextCount;
+    public String getFrek() {
+        return this.frek;
     }
 
-    public void setTextCount(int TextCount) {
-        this.TextCount = TextCount;
+    public void setFrek(String frek) {
+        this.frek = frek;
     }
+
+    public String getShort() {
+        return this.Short;
+    }
+
+    public void setShort(String Short) {
+        this.Short = Short;
+    }
+
 }

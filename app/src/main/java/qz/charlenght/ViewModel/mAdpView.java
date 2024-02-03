@@ -35,7 +35,7 @@ public class mAdpView extends RecyclerView.Adapter<mAdpView.VH> {
         TextItems item = items.get(arg1);
         
         holder.bind.textitem.setText(item.getText());
-        holder.bind.lengtext.setText(String.valueOf(item.getTextCount()));
+        holder.bind.freq.setText(String.valueOf(item.getFrek()));
         
     }
 

@@ -46,5 +46,11 @@
              android:id="@+id/panjang" />
 
     </LinearLayout>
-
+    
+    <Button 
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="Add"
+        android:id="@+id/add"
+    />
 </LinearLayout>
