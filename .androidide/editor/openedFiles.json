@@ -1,35 +1,35 @@
 {
   "allFiles": [
     {
-      "file": "/storage/emulated/0/AndroidIDEProjects/CharLenght/app/src/main/java/qz/charlenght/Model/UserDictionaryHelper.java",
+      "file": "/storage/emulated/0/AndroidIDEProjects/CharLenght/app/src/main/java/qz/userdictionary/MainActivity.java",
       "selection": {
         "end": {
-          "column": 0,
-          "index": 0,
-          "line": 0
+          "column": 5,
+          "index": 3972,
+          "line": 103
         },
         "start": {
-          "column": 0,
-          "index": 0,
-          "line": 0
+          "column": 5,
+          "index": 3972,
+          "line": 103
         }
       }
     },
     {
-      "file": "/storage/emulated/0/AndroidIDEProjects/CharLenght/app/src/main/java/qz/charlenght/MainActivity.java",
+      "file": "/storage/emulated/0/AndroidIDEProjects/CharLenght/app/build.gradle",
       "selection": {
         "end": {
-          "column": 72,
-          "index": 4761,
-          "line": 115
+          "column": 14,
+          "index": 755,
+          "line": 41
         },
         "start": {
-          "column": 72,
-          "index": 4761,
-          "line": 115
+          "column": 14,
+          "index": 755,
+          "line": 41
         }
       }
     }
   ],
-  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/CharLenght/app/src/main/java/qz/charlenght/MainActivity.java"
+  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/CharLenght/app/src/main/java/qz/userdictionary/MainActivity.java"
 }

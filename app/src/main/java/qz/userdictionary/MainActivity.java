@@ -1,6 +1,5 @@
-package qz.charlenght;
+package qz.userdictionary;
 
-import android.Manifest;
 import android.content.Intent;
 import android.graphics.Color;
 import android.provider.Settings;
@@ -10,28 +9,18 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import com.google.android.material.snackbar.Snackbar;
-import com.karumi.dexter.Dexter;
-import com.karumi.dexter.DexterBuilder;
-import com.karumi.dexter.PermissionToken;
-import com.karumi.dexter.listener.PermissionDeniedResponse;
-import com.karumi.dexter.listener.PermissionRequest;
-import com.karumi.dexter.listener.PermissionGrantedResponse;
-import com.karumi.dexter.listener.single.DialogOnDeniedPermissionListener;
-import com.karumi.dexter.listener.single.PermissionListener;
 
-import com.karumi.dexter.listener.single.SnackbarOnDeniedPermissionListener;
 import java.util.ArrayList;
-import qz.charlenght.Model.TextItems;
-import qz.charlenght.Model.UserDictionaryHelper;
-import qz.charlenght.ViewModel.mAdpView;
-import qz.charlenght.databinding.ActivityMainBinding;
+import qz.userdictionary.Model.TextItems;
+import qz.userdictionary.Model.UserDictionaryHelper;
+import qz.userdictionary.ViewModel.mAdpView;
+import qz.userdictionary.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
     ArrayList<TextItems> textitem;
-    private static final int PERMISSION_REQUEST_CODE = 123;
     mAdpView adapter;
+    UserDictionaryHelper dictionary;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
 
         // set content view to binding's root
         setContentView(binding.getRoot());
-        RequestPermission();
 
         textitem = new ArrayList<TextItems>();
         adapter = new mAdpView(textitem);
@@ -50,7 +38,15 @@ public class MainActivity extends AppCompatActivity {
         binding.recyclerView.setAdapter(adapter);
         binding.keys.setText("coba");
         binding.checkleng.setText("makan ikan tapi nete");
-
+        
+        dictionary = new UserDictionaryHelper(this);
+        
+        if (dictionary.isMyInputMethodEnabled()) {
+            Toast.makeText(this, "HIDUP", Toast.LENGTH_LONG).show();
+        } else {
+            openInputMethod();
+        }
+        
         binding.checkleng.addTextChangedListener(
                 new TextWatcher() {
 
@@ -77,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
                             binding.panjang.setTextColor(Color.BLACK);
                         }
                     }
-
+                
                     @Override
                     public void afterTextChanged(Editable arg0) {}
                 });
@@ -91,51 +87,19 @@ public class MainActivity extends AppCompatActivity {
                     teks.setShort(keys);
                     teks.setFrek("250");
                     try {
-                        UserDictionaryHelper dict = new UserDictionaryHelper(v.getContext(), teks);
-                        dict.applyToLocal("in_ID");
+                    
+                        //                        UserDictionaryHelper dict = new
+                        // UserDictionaryHelper(v.getContext(), teks);
+                        //                        dict.applyToLocal("in_ID");
+                    
                     } catch (Exception err) {
                         Toast.makeText(v.getContext(), err.toString(), Toast.LENGTH_LONG).show();
                     }
                 });
     }
 
-    void RequestPermission() {
-        
-        SnackbarOnDeniedPermissionListener dialogperm =
-                SnackbarOnDeniedPermissionListener.Builder.with(binding.getRoot(), "Jejdndnd")
-                        .withOpenSettingsButton("Settings")
-                        .withCallback(
-                                new Snackbar.Callback() {
-
-                                    @Override
-                                    public void onDismissed(Snackbar arg0, int arg1) {
-                                        super.onDismissed(arg0, arg1);
-                                    }
-
-                                    @Override
-                                    public void onShown(Snackbar arg0) {
-//                                        arg0.setAction(arg0.getView().getId(), (v) -> {
-//                                            Intent intent =
-//                                                new Intent(Settings.ACTION_INPUT_METHOD_SETTINGS);
-//                                        startActivity(intent);
-//                                        });
-//                    
-                                        super.onShown(arg0);
-                                    }
-                                })
-                        .build();
-        
-
-        DexterBuilder build =
-                Dexter.withContext(this)
-                        .withPermission(Manifest.permission.BIND_INPUT_METHOD)
-                        .withListener(dialogperm);
-        build.check();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        this.binding = null;
+    void openInputMethod() {
+        Intent intent = new Intent(Settings.ACTION_INPUT_METHOD_SETTINGS);
+        startActivity(intent);
     }
 }

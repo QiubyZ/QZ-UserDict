@@ -1,6 +1,6 @@
-package qz.charlenght.Model;
+package qz.userdictionary.Model;
 
-import qz.charlenght.Model.TextItems;
+import qz.userdictionary.Model.TextItems;
 
 public class TextItems {
     public String Text;

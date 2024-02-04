@@ -1,13 +1,13 @@
-package qz.charlenght.ViewModel;
+package qz.userdictionary.ViewModel;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
-import qz.charlenght.Model.TextItems;
-import qz.charlenght.ViewModel.mAdpView;
-import qz.charlenght.databinding.CostumViewTextitemBinding;
+import qz.userdictionary.Model.TextItems;
+import qz.userdictionary.ViewModel.mAdpView;
+import qz.userdictionary.databinding.CostumViewTextitemBinding;
 
 public class mAdpView extends RecyclerView.Adapter<mAdpView.VH> {
 
@@ -40,7 +40,7 @@ public class mAdpView extends RecyclerView.Adapter<mAdpView.VH> {
     }
 
     @Override
-    public qz.charlenght.ViewModel.mAdpView.VH onCreateViewHolder(ViewGroup arg0, int arg1) {
+    public qz.userdictionary.ViewModel.mAdpView.VH onCreateViewHolder(ViewGroup arg0, int arg1) {
         return new VH(CostumViewTextitemBinding.inflate(LayoutInflater.from(arg0.getContext()), arg0, false));
     }
 }

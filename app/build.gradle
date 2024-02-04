@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace 'qz.charlenght'
+    namespace 'qz.userdictionary'
     compileSdk 34
     
     defaultConfig {
-        applicationId "qz.charlenght"
+        applicationId "qz.userdictionary"
         minSdk 21
         targetSdk 34
         versionCode 1
@@ -40,8 +40,6 @@ android {
 }
 
 dependencies {
-//implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.karumi:dexter:6.2.3'
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("com.google.android.material:material:1.9.0")
