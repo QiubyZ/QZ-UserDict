@@ -1,5 +1,10 @@
 package qz.userdictionary;
 
+import android.provider.UserDictionary;
+import java.util.Dictionary;
+import qz.userdictionary.ViewModel.Dialogs;
+import java.util.Dictionary;
+
 import android.content.Intent;
 import android.graphics.Color;
 import android.provider.Settings;
@@ -36,17 +41,11 @@ public class MainActivity extends AppCompatActivity {
         adapter = new mAdpView(textitem);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
         binding.recyclerView.setAdapter(adapter);
+
         binding.keys.setText("coba");
         binding.checkleng.setText("makan ikan tapi nete");
-        
         dictionary = new UserDictionaryHelper(this);
-        
-        if (dictionary.isMyInputMethodEnabled()) {
-            Toast.makeText(this, "HIDUP", Toast.LENGTH_LONG).show();
-        } else {
-            openInputMethod();
-        }
-        
+
         binding.checkleng.addTextChangedListener(
                 new TextWatcher() {
 
@@ -73,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                             binding.panjang.setTextColor(Color.BLACK);
                         }
                     }
-                
+
                     @Override
                     public void afterTextChanged(Editable arg0) {}
                 });
@@ -86,20 +85,23 @@ public class MainActivity extends AppCompatActivity {
                     teks.setText(kata);
                     teks.setShort(keys);
                     teks.setFrek("250");
-                    try {
-                    
-                        //                        UserDictionaryHelper dict = new
-                        // UserDictionaryHelper(v.getContext(), teks);
-                        //                        dict.applyToLocal("in_ID");
-                    
-                    } catch (Exception err) {
-                        Toast.makeText(v.getContext(), err.toString(), Toast.LENGTH_LONG).show();
-                    }
+                    dictionary.setItem(teks);
+                    dictionary.applyToLocal("in_ID");
                 });
     }
 
-    void openInputMethod() {
-        Intent intent = new Intent(Settings.ACTION_INPUT_METHOD_SETTINGS);
-        startActivity(intent);
+    @Override
+    protected void onStart() {
+        check();
+        super.onStart();
+        // TODO: Implement this method
+    }
+
+    void check() {
+        if (dictionary.isMyInputMethodEnabled()) {
+            Toast.makeText(this, "HIDUP", Toast.LENGTH_LONG).show();
+        } else {
+            new Dialogs(this);
+        }
     }
 }

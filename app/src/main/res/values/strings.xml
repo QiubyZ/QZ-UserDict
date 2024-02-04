@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">QZ UserDict</string>
+    <string name="dialog_title">Info</string>
+    <string name="dialog_messages">Enable Virtual Keyboard QZ UserDict </string>
+    <string name="dialog_goto">Goto Settings</string>
+    <string name="dialog_dismis">Exit App</string>
 </resources>
