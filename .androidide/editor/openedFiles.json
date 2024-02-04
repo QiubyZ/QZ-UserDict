@@ -1,35 +1,50 @@
 {
   "allFiles": [
     {
-      "file": "/storage/emulated/0/AndroidIDEProjects/CharLenght/app/src/main/java/qz/userdictionary/MainActivity.java",
+      "file": "/storage/emulated/0/AndroidIDEProjects/GoogleDictionary/app/build.gradle",
       "selection": {
         "end": {
-          "column": 5,
-          "index": 3972,
-          "line": 103
+          "column": 32,
+          "index": 43,
+          "line": 2
         },
         "start": {
-          "column": 5,
-          "index": 3972,
-          "line": 103
+          "column": 32,
+          "index": 43,
+          "line": 2
         }
       }
     },
     {
-      "file": "/storage/emulated/0/AndroidIDEProjects/CharLenght/app/build.gradle",
+      "file": "/storage/emulated/0/AndroidIDEProjects/GoogleDictionary/app/src/main/java/qz/userdictionary/MainActivity.java",
       "selection": {
         "end": {
-          "column": 14,
-          "index": 755,
-          "line": 41
+          "column": 0,
+          "index": 0,
+          "line": 0
         },
         "start": {
-          "column": 14,
-          "index": 755,
-          "line": 41
+          "column": 0,
+          "index": 0,
+          "line": 0
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/GoogleDictionary/.github/workflows/android.yml",
+      "selection": {
+        "end": {
+          "column": 25,
+          "index": 209,
+          "line": 15
+        },
+        "start": {
+          "column": 25,
+          "index": 209,
+          "line": 15
         }
       }
     }
   ],
-  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/CharLenght/app/src/main/java/qz/userdictionary/MainActivity.java"
+  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/GoogleDictionary/.github/workflows/android.yml"
 }
