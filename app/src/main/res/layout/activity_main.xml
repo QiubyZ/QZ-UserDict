@@ -4,53 +4,74 @@
      xmlns:app="http://schemas.android.com/apk/res-auto"
      android:layout_height="match_parent"
      android:layout_width="match_parent"
+     android:padding="5dp"
      android:orientation="vertical">
+
+    <com.google.android.material.textfield.TextInputLayout
+         android:layout_height="wrap_content"
+         android:layout_width="match_parent"
+         android:hint="@string/input_panjang">
+
+        <com.google.android.material.textfield.TextInputEditText
+             android:layout_height="wrap_content"
+             android:layout_width="match_parent"
+             android:id="@+id/tergetAngka" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+         android:layout_height="wrap_content"
+         android:layout_width="match_parent"
+         android:hint="@string/input_keys">
+
+        <com.google.android.material.textfield.TextInputEditText
+             android:layout_height="wrap_content"
+             android:layout_width="match_parent"
+             android:id="@+id/keys" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/view_counter"
+         android:layout_height="wrap_content"
+         android:layout_width="match_parent"
+         android:hint="@string/input_words"
+        app:counterEnabled="true"
+         android:elevation="5dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+             android:layout_height="wrap_content"
+             android:layout_width="match_parent"
+             android:id="@+id/checkleng" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <LinearLayout
+         android:layout_height="wrap_content"
+         android:layout_width="match_parent"
+         android:gravity="center"
+         android:orientation="horizontal">
+
+        <Button
+             android:layout_height="wrap_content"
+             android:layout_width="match_parent"
+             android:layout_weight="1"
+             android:text="Add"
+             android:id="@+id/add" />
+
+        <Button
+             android:layout_height="wrap_content"
+             android:layout_width="match_parent"
+             android:layout_weight="1"
+             android:text="Delete All Dictionary"
+             android:id="@+id/clearAll" />
+
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
          android:layout_height="wrap_content"
          android:layout_width="match_parent"
          android:id="@+id/recyclerView" />
 
-    <EditText
-         android:layout_height="wrap_content"
-         android:layout_width="match_parent"
-         android:gravity="left|top"
-         android:hint="Target Angka"
-         android:text="45"
-         android:id="@+id/tergetAngka" />
-
-    <EditText
-         android:layout_height="wrap_content"
-         android:layout_width="match_parent"
-         android:gravity="left|top"
-         android:hint="Keys"
-         android:id="@+id/keys" />
-
-    <EditText
-         android:layout_height="wrap_content"
-         android:layout_width="match_parent"
-         android:gravity="left|top"
-         android:id="@+id/checkleng" />
-
-    <LinearLayout
-         android:layout_height="wrap_content"
-         android:layout_width="match_parent"
-         android:orientation="horizontal"
-         android:layout_gravity="left">
-
-        <TextView
-             android:layout_height="wrap_content"
-             android:layout_width="wrap_content"
-             android:inputType="number"
-             android:text="panjang"
-             android:id="@+id/panjang" />
-
-    </LinearLayout>
-    
-    <Button 
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="Add"
-        android:id="@+id/add"
-    />
 </LinearLayout>

@@ -7,6 +7,12 @@ public class TextItems {
     public String Short;
     public String frek;
 
+    public TextItems(String Text, String Short, String frek) {
+        this.Text = Text;
+        this.Short = Short;
+        this.frek = frek;
+    }
+
     public TextItems() {}
 
     public String getText() {
@@ -32,5 +38,4 @@ public class TextItems {
     public void setShort(String Short) {
         this.Short = Short;
     }
-
 }

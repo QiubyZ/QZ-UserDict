@@ -1,12 +1,18 @@
 package qz.userdictionary.Model;
 
+import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
+import android.net.Uri;
 import android.provider.UserDictionary;
 import android.view.inputmethod.InputMethodInfo;
 import android.view.inputmethod.InputMethodManager;
+import java.util.ArrayList;
+import java.util.Dictionary;
 import java.util.List;
 import java.util.Locale;
+import qz.userdictionary.Model.TextItems;
 
 public class UserDictionaryHelper {
     Context appid;
@@ -26,6 +32,49 @@ public class UserDictionaryHelper {
         c.put(UserDictionary.Words.FREQUENCY, this.item.getFrek());
         c.put(UserDictionary.Words.SHORTCUT, this.item.getShort());
         this.appid.getContentResolver().insert(UserDictionary.Words.CONTENT_URI, c);
+    }
+
+    public List<TextItems> getListItem() {
+        List<TextItems> listof = new ArrayList<TextItems>();
+        ContentResolver resolver = appid.getContentResolver();
+        Cursor cursor =
+                resolver.query(
+                        UserDictionary.Words.CONTENT_URI,
+                        new String[] {
+                            UserDictionary.Words.WORD,
+                            UserDictionary.Words.FREQUENCY,
+                            UserDictionary.Words.SHORTCUT
+                        },
+                        null,
+                        null,
+                        UserDictionary.Words.WORD + " ASC");
+
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+
+                do {
+                    String word =
+                            cursor.getString(cursor.getColumnIndex(UserDictionary.Words.WORD));
+                    String shortcut =
+                            cursor.getString(cursor.getColumnIndex(UserDictionary.Words.SHORTCUT));
+                    int Freq = cursor.getInt(cursor.getColumnIndex(UserDictionary.Words.FREQUENCY));
+                    listof.add(new TextItems(word, shortcut, String.valueOf(Freq)));
+                } while (cursor.moveToNext());
+            }
+        }
+        return listof;
+    }
+
+    public void clearAllDictionary() {
+        appid.getContentResolver().delete(UserDictionary.Words.CONTENT_URI, null, null);
+    }
+
+    public void clearSelectItem(String kata) {
+        appid.getContentResolver()
+                .delete(
+                        UserDictionary.Words.CONTENT_URI,
+                        UserDictionary.Words.WORD + " = ?",
+                        new String[] {kata});
     }
 
     public void applytoAll() {

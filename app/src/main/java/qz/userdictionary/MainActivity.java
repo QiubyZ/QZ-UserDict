@@ -39,13 +39,17 @@ public class MainActivity extends AppCompatActivity {
 
         textitem = new ArrayList<TextItems>();
         adapter = new mAdpView(textitem);
+        dictionary = new UserDictionaryHelper(this);
+        
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
         binding.recyclerView.setAdapter(adapter);
-
+        
         binding.keys.setText("coba");
         binding.checkleng.setText("makan ikan tapi nete");
-        dictionary = new UserDictionaryHelper(this);
-
+        
+        textitem.addAll(dictionary.getListItem());
+        adapter.notifyDataSetChanged();
+        
         binding.checkleng.addTextChangedListener(
                 new TextWatcher() {
 
@@ -56,21 +60,11 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onTextChanged(CharSequence text, int start, int before, int count) {
                         String TargetAngka = binding.tergetAngka.getText().toString();
-
                         if (TargetAngka.isEmpty() || TargetAngka.isBlank()) {
                             binding.tergetAngka.setText("45");
                             TargetAngka = binding.tergetAngka.getText().toString();
                         }
-
-                        int hut = text.length();
-                        String hit = String.valueOf(hut);
-                        binding.panjang.setText(hit);
-
-                        if (hut > Integer.valueOf(TargetAngka)) {
-                            binding.panjang.setTextColor(Color.RED);
-                        } else {
-                            binding.panjang.setTextColor(Color.BLACK);
-                        }
+                    binding.viewCounter.setCounterMaxLength(Integer.valueOf(TargetAngka));
                     }
 
                     @Override
@@ -81,15 +75,25 @@ public class MainActivity extends AppCompatActivity {
                 (v) -> {
                     String kata = binding.checkleng.getText().toString();
                     String keys = binding.keys.getText().toString();
-                    TextItems teks = new TextItems();
-                    teks.setText(kata);
-                    teks.setShort(keys);
-                    teks.setFrek("250");
-                    dictionary.setItem(teks);
-                    dictionary.applyToLocal("in_ID");
+                    addData(new TextItems(kata,keys,"250"), "in_ID");
                 });
+        
+        binding.clearAll.setOnClickListener((v) -> {
+            ClearAllDictionary();
+        });
+        
     }
-
+    void ClearAllDictionary(){
+        dictionary.clearAllDictionary();
+        textitem.clear();
+        adapter.notifyDataSetChanged();
+    }
+    void addData(TextItems item, String LocalId){
+        dictionary.setItem(item);
+        dictionary.applyToLocal(LocalId);
+        textitem.add(item);
+        adapter.notifyDataSetChanged();
+    }
     @Override
     protected void onStart() {
         check();
@@ -99,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
 
     void check() {
         if (dictionary.isMyInputMethodEnabled()) {
-            Toast.makeText(this, "HIDUP", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Allow", Toast.LENGTH_LONG).show();
         } else {
             new Dialogs(this);
         }

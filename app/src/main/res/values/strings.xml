@@ -5,4 +5,7 @@
     <string name="dialog_messages">Enable Virtual Keyboard QZ UserDict </string>
     <string name="dialog_goto">Goto Settings</string>
     <string name="dialog_dismis">Exit App</string>
+    <string name ="input_panjang">Panjang Character</string>
+    <string name="input_words">Kata</string>
+    <string name="input_keys">Shortcut</string>
 </resources>
