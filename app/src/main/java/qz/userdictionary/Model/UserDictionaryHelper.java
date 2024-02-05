@@ -51,14 +51,13 @@ public class UserDictionaryHelper {
 
         if (cursor != null && cursor.moveToFirst()) {
             do {
-                if (cursor.getColumnCount() != -1) {
                     String word =
-                            cursor.getString(cursor.getColumnIndex(UserDictionary.Words.WORD));
+                            cursor.getString(cursor.getColumnIndexOrThrow(UserDictionary.Words.WORD));
                     String shortcut =
-                            cursor.getString(cursor.getColumnIndex(UserDictionary.Words.SHORTCUT));
-                    int Freq = cursor.getInt(cursor.getColumnIndex(UserDictionary.Words.FREQUENCY));
+                            cursor.getString(cursor.getColumnIndexOrThrow(UserDictionary.Words.SHORTCUT));
+                    int Freq = cursor.getInt(cursor.getColumnIndexOrThrow(UserDictionary.Words.FREQUENCY));
                     listof.add(new TextItems(word, shortcut, String.valueOf(Freq)));
-                }
+                
             } while (cursor.moveToNext());
         }
 
