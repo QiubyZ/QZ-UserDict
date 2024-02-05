@@ -49,19 +49,19 @@ public class UserDictionaryHelper {
                         null,
                         UserDictionary.Words.WORD + " ASC");
 
-        if (cursor != null) {
-            if (cursor.moveToFirst()) {
-
-                do {
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
+                if (cursor.getColumnCount() != -1) {
                     String word =
                             cursor.getString(cursor.getColumnIndex(UserDictionary.Words.WORD));
                     String shortcut =
                             cursor.getString(cursor.getColumnIndex(UserDictionary.Words.SHORTCUT));
                     int Freq = cursor.getInt(cursor.getColumnIndex(UserDictionary.Words.FREQUENCY));
                     listof.add(new TextItems(word, shortcut, String.valueOf(Freq)));
-                } while (cursor.moveToNext());
-            }
+                }
+            } while (cursor.moveToNext());
         }
+
         return listof;
     }
 
