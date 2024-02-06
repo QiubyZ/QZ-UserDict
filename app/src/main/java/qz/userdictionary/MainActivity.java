@@ -1,5 +1,7 @@
 package qz.userdictionary;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.provider.UserDictionary;
 import java.util.Dictionary;
 import qz.userdictionary.ViewModel.Dialogs;
@@ -26,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<TextItems> textitem;
     mAdpView adapter;
     UserDictionaryHelper dictionary;
+    final int plus = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         textitem = new ArrayList<TextItems>();
-        adapter = new mAdpView(textitem);
+        adapter = new mAdpView(textitem, new Handler(Looper.getMainLooper()));
         dictionary = new UserDictionaryHelper(this);
         
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -70,12 +73,13 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void afterTextChanged(Editable arg0) {}
                 });
-
+        
+        
         binding.add.setOnClickListener(
                 (v) -> {
                     String kata = binding.checkleng.getText().toString();
                     String keys = binding.keys.getText().toString();
-                    addData(new TextItems(kata,keys,"250"), "in_ID");
+                    addData(new TextItems(kata,keys,"250"),String.valueOf(UserDictionary.Words.LOCALE_TYPE_ALL));
                 });
         
         binding.clearAll.setOnClickListener((v) -> {
@@ -89,9 +93,10 @@ public class MainActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged();
     }
     void addData(TextItems item, String LocalId){
+        textitem.clear();
         dictionary.setItem(item);
         dictionary.applyToLocal(LocalId);
-        textitem.add(item);
+        textitem.addAll(dictionary.getListItem());
         adapter.notifyDataSetChanged();
     }
     @Override

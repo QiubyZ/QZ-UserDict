@@ -1,17 +1,47 @@
 {
   "allFiles": [
     {
+      "file": "/storage/emulated/0/AndroidIDEProjects/GoogleDictionary/app/src/main/java/qz/userdictionary/ViewModel/mAdpView.java",
+      "selection": {
+        "end": {
+          "column": 8,
+          "index": 2709,
+          "line": 77
+        },
+        "start": {
+          "column": 8,
+          "index": 2709,
+          "line": 77
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/GoogleDictionary/app/src/main/res/layout/activity_main.xml",
+      "selection": {
+        "end": {
+          "column": 44,
+          "index": 2600,
+          "line": 72
+        },
+        "start": {
+          "column": 44,
+          "index": 2600,
+          "line": 72
+        }
+      }
+    },
+    {
       "file": "/storage/emulated/0/AndroidIDEProjects/GoogleDictionary/app/src/main/java/qz/userdictionary/Model/UserDictionaryHelper.java",
       "selection": {
         "end": {
-          "column": 73,
-          "index": 2266,
-          "line": 57
+          "column": 48,
+          "index": 3437,
+          "line": 90
         },
         "start": {
-          "column": 73,
-          "index": 2266,
-          "line": 57
+          "column": 48,
+          "index": 3437,
+          "line": 90
         }
       }
     }

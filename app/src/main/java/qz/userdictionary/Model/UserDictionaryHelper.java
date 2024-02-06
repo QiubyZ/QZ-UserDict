@@ -26,12 +26,14 @@ public class UserDictionaryHelper {
 
     public void applyToLocal(String localid) {
         ContentValues c = new ContentValues();
-        c.put(UserDictionary.Words.APP_ID, this.appid.getPackageName());
+        c.put(UserDictionary.Words.APP_ID, appid.getPackageName());
         c.put(UserDictionary.Words.LOCALE, localid);
-        c.put(UserDictionary.Words.WORD, this.item.getText());
-        c.put(UserDictionary.Words.FREQUENCY, this.item.getFrek());
-        c.put(UserDictionary.Words.SHORTCUT, this.item.getShort());
-        this.appid.getContentResolver().insert(UserDictionary.Words.CONTENT_URI, c);
+        //c.put(UserDictionary.Words._COUNT, item.get_id());
+        c.put(UserDictionary.Words.WORD, item.getText());
+        c.put(UserDictionary.Words.FREQUENCY, item.getFrek());
+        c.put(UserDictionary.Words.SHORTCUT, item.getShort());
+        ContentResolver content = appid.getContentResolver();
+        content.insert(UserDictionary.Words.CONTENT_URI, c);
     }
 
     public List<TextItems> getListItem() {
@@ -43,7 +45,8 @@ public class UserDictionaryHelper {
                         new String[] {
                             UserDictionary.Words.WORD,
                             UserDictionary.Words.FREQUENCY,
-                            UserDictionary.Words.SHORTCUT
+                            UserDictionary.Words.SHORTCUT,
+                            UserDictionary.Words._ID,
                         },
                         null,
                         null,
@@ -56,11 +59,12 @@ public class UserDictionaryHelper {
                     String shortcut =
                             cursor.getString(cursor.getColumnIndexOrThrow(UserDictionary.Words.SHORTCUT));
                     int Freq = cursor.getInt(cursor.getColumnIndexOrThrow(UserDictionary.Words.FREQUENCY));
-                    listof.add(new TextItems(word, shortcut, String.valueOf(Freq)));
+                    int id = cursor.getInt(cursor.getColumnIndexOrThrow(UserDictionary.Words._ID));
+                    listof.add(new TextItems(word, shortcut, String.valueOf(Freq), id));
                 
             } while (cursor.moveToNext());
         }
-
+        cursor.close();
         return listof;
     }
 
@@ -68,12 +72,12 @@ public class UserDictionaryHelper {
         appid.getContentResolver().delete(UserDictionary.Words.CONTENT_URI, null, null);
     }
 
-    public void clearSelectItem(String kata) {
+    public void clearSelectItem(int id) {
         appid.getContentResolver()
                 .delete(
                         UserDictionary.Words.CONTENT_URI,
-                        UserDictionary.Words.WORD + " = ?",
-                        new String[] {kata});
+                        UserDictionary.Words._ID + " = ?",
+                        new String[] {String.valueOf(id)});
     }
 
     public void applytoAll() {
@@ -84,8 +88,7 @@ public class UserDictionaryHelper {
 
     public boolean isMyInputMethodEnabled() {
         boolean isEnabled = false;
-        InputMethodManager inputMethodManager =
-                (InputMethodManager) appid.getSystemService(appid.INPUT_METHOD_SERVICE);
+        InputMethodManager inputMethodManager =  manager();
         List<InputMethodInfo> inputMethodList = inputMethodManager.getEnabledInputMethodList();
         for (InputMethodInfo inputMethodInfo : inputMethodList) {
             if (inputMethodInfo.getPackageName().equals(appid.getPackageName())) {
@@ -95,6 +98,13 @@ public class UserDictionaryHelper {
         }
 
         return isEnabled;
+    }
+    
+    public InputMethodManager manager(){
+        InputMethodManager inputMethodManager =
+                (InputMethodManager) appid.getSystemService(appid.INPUT_METHOD_SERVICE);
+        
+        return inputMethodManager;
     }
 
     public Context getAppid() {
