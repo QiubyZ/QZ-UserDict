@@ -41,9 +41,9 @@ public class MainActivity extends AppCompatActivity {
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
         binding.recyclerView.setAdapter(adapter);
 
-        binding.keys.setText("coba");
-        binding.checkleng.setText("makan ikan tapi nete");
-
+//        binding.keys.setText("coba");
+//        binding.checkleng.setText("makan ikan tapi nete");
+//        
         textitem.addAll(dictionary.getListItem());
         adapter.notifyDataSetChanged();
 
