@@ -14,7 +14,22 @@
           "line": 58
         }
       }
+    },
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/GoogleDictionary/.github/workflows/android.yml",
+      "selection": {
+        "end": {
+          "column": 68,
+          "index": 200,
+          "line": 11
+        },
+        "start": {
+          "column": 68,
+          "index": 200,
+          "line": 11
+        }
+      }
     }
   ],
-  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/GoogleDictionary/app/src/main/java/qz/userdictionary/MainActivity.java"
+  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/GoogleDictionary/.github/workflows/android.yml"
 }
