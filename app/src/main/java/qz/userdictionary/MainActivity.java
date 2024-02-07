@@ -43,16 +43,16 @@ public class MainActivity extends AppCompatActivity {
         textitem = new ArrayList<TextItems>();
         adapter = new mAdpView(textitem, new Handler(Looper.getMainLooper()));
         dictionary = new UserDictionaryHelper(this);
-        
+
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
         binding.recyclerView.setAdapter(adapter);
-        
+
         binding.keys.setText("coba");
         binding.checkleng.setText("makan ikan tapi nete");
-        
+
         textitem.addAll(dictionary.getListItem());
         adapter.notifyDataSetChanged();
-        
+
         binding.checkleng.addTextChangedListener(
                 new TextWatcher() {
 
@@ -67,38 +67,43 @@ public class MainActivity extends AppCompatActivity {
                             binding.tergetAngka.setText("45");
                             TargetAngka = binding.tergetAngka.getText().toString();
                         }
-                    binding.viewCounter.setCounterMaxLength(Integer.valueOf(TargetAngka));
+                        binding.viewCounter.setCounterMaxLength(Integer.valueOf(TargetAngka));
                     }
 
                     @Override
                     public void afterTextChanged(Editable arg0) {}
                 });
-        
-        
+
         binding.add.setOnClickListener(
                 (v) -> {
                     String kata = binding.checkleng.getText().toString();
                     String keys = binding.keys.getText().toString();
-                    addData(new TextItems(kata,keys,"250"),String.valueOf(UserDictionary.Words.LOCALE_TYPE_ALL));
+                
+                    addData(
+                            new TextItems(kata, keys, "250",String.valueOf(UserDictionary.Words.LOCALE_TYPE_ALL)));
                 });
-        
-        binding.clearAll.setOnClickListener((v) -> {
-            ClearAllDictionary();
-        });
-        
+
+        binding.clearAll.setOnClickListener(
+                (v) -> {
+                    ClearAllDictionary();
+                });
     }
-    void ClearAllDictionary(){
+
+    void ClearAllDictionary() {
         dictionary.clearAllDictionary();
         textitem.clear();
         adapter.notifyDataSetChanged();
     }
-    void addData(TextItems item, String LocalId){
+
+    void addData(TextItems item) {
         textitem.clear();
-        dictionary.setItem(item);
-        dictionary.applyToLocal(LocalId);
+        
+        dictionary.add(item);
+        
         textitem.addAll(dictionary.getListItem());
         adapter.notifyDataSetChanged();
     }
+
     @Override
     protected void onStart() {
         check();
@@ -107,9 +112,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void check() {
-        if (dictionary.isMyInputMethodEnabled()) {
-            Toast.makeText(this, "Allow", Toast.LENGTH_LONG).show();
-        } else {
+        if (!dictionary.isMyInputMethodEnabled()) {
             new Dialogs(this);
         }
     }

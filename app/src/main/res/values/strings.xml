@@ -8,4 +8,7 @@
     <string name ="input_panjang">Panjang Character</string>
     <string name="input_words">Kata</string>
     <string name="input_keys">Shortcut</string>
+    <string name="submit">Submit</string>
+    <string name="cancel">Cancel</string>
+    
 </resources>

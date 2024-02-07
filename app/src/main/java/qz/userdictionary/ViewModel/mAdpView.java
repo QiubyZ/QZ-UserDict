@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import qz.userdictionary.Model.TextItems;
 import qz.userdictionary.Model.UserDictionaryHelper;
+import qz.userdictionary.ViewModel.DialogEdit;
 import qz.userdictionary.ViewModel.mAdpView;
 import qz.userdictionary.databinding.CostumViewTextitemBinding;
 
@@ -46,21 +47,21 @@ public class mAdpView extends RecyclerView.Adapter<mAdpView.VH> {
         TextItems item = items.get(posisi);
         
         UserDictionaryHelper dict = new UserDictionaryHelper(holder.bind.getRoot().getContext());
-        dict.setItem(item);
 
-        holder.bind.shortcut.setText(dict.getItem().getShort());
-        holder.bind.freq.setText(String.valueOf(dict.getItem().getFrek()));
-        holder.bind.textitem.setText(dict.getItem().getText());
+        holder.bind.shortcut.setText(item.getShort());
+        holder.bind.freq.setText(String.valueOf(item.getFrek()));
+        holder.bind.textitem.setText(item.getText());
         
         holder.bind.delete.setOnClickListener(
                 (v) -> {
-                    dict.clearSelectItem(dict.getItem().get_id());
+                    dict.clearSelectItem(item.get_id());
                     items.remove(posisi);
                     notifyItemRemoved(posisi);
-                    notifyItemRangeChanged(posisi, items.size());
-                    //dict.manager().restartInput(holder.bind.getRoot());
+                    notifyItemRangeChanged(posisi, getItemCount());
+                    dict.manager().restartInput(holder.bind.getRoot());
                     // notifyDataSetChanged();
                 });
+        
         holder.bind
                 .getRoot()
                 .setOnClickListener(
@@ -71,10 +72,17 @@ public class mAdpView extends RecyclerView.Adapter<mAdpView.VH> {
                                             Toast.LENGTH_SHORT)
                                     .show();
                         });
+        
+        holder.bind.edit.setOnClickListener((v) -> {
+                new DialogEdit(v.getContext(), item);
+                notifyItemChanged(posisi);
+                notifyItemChanged(posisi, getItemCount());
+        });
 
-//        dict.getAppid()
-//                .getContentResolver()
-//                .registerContentObserver(UserDictionary.CONTENT_URI, true, userdicob);
+        dict.getAppid()
+                .getContentResolver()
+                .registerContentObserver(UserDictionary.CONTENT_URI, true, userdicob);
+        
         }
 
     @Override
@@ -83,7 +91,6 @@ public class mAdpView extends RecyclerView.Adapter<mAdpView.VH> {
                 CostumViewTextitemBinding.inflate(
                         LayoutInflater.from(arg0.getContext()), arg0, false));
     }
-
     private class UserDictOb extends ContentObserver {
         Handler handler;
         public UserDictOb(Handler handler) {
@@ -92,8 +99,8 @@ public class mAdpView extends RecyclerView.Adapter<mAdpView.VH> {
 
         @Override
         public void onChange(boolean arg0, Uri arg1) {
+            notifyDataSetChanged();
             super.onChange(arg0, arg1);
-            // notifyDataSetChanged();
             // TODO: Implement this method
         }
     }

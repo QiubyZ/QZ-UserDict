@@ -16,19 +16,16 @@ import qz.userdictionary.Model.TextItems;
 
 public class UserDictionaryHelper {
     Context appid;
-    TextItems item;
-
     public UserDictionaryHelper(Context appid) {
         this.appid = appid;
     }
 
     public UserDictionaryHelper() {}
 
-    public void applyToLocal(String localid) {
+    public void add(TextItems item) {
         ContentValues c = new ContentValues();
         c.put(UserDictionary.Words.APP_ID, appid.getPackageName());
-        c.put(UserDictionary.Words.LOCALE, localid);
-        //c.put(UserDictionary.Words._COUNT, item.get_id());
+        c.put(UserDictionary.Words.LOCALE, item.getLocale());
         c.put(UserDictionary.Words.WORD, item.getText());
         c.put(UserDictionary.Words.FREQUENCY, item.getFrek());
         c.put(UserDictionary.Words.SHORTCUT, item.getShort());
@@ -47,6 +44,7 @@ public class UserDictionaryHelper {
                             UserDictionary.Words.FREQUENCY,
                             UserDictionary.Words.SHORTCUT,
                             UserDictionary.Words._ID,
+                            UserDictionary.Words.LOCALE
                         },
                         null,
                         null,
@@ -60,12 +58,28 @@ public class UserDictionaryHelper {
                             cursor.getString(cursor.getColumnIndexOrThrow(UserDictionary.Words.SHORTCUT));
                     int Freq = cursor.getInt(cursor.getColumnIndexOrThrow(UserDictionary.Words.FREQUENCY));
                     int id = cursor.getInt(cursor.getColumnIndexOrThrow(UserDictionary.Words._ID));
-                    listof.add(new TextItems(word, shortcut, String.valueOf(Freq), id));
+                    String locale = cursor.getString(cursor.getColumnIndexOrThrow(UserDictionary.Words.LOCALE));
                 
+                    listof.add(new TextItems(word, shortcut, String.valueOf(Freq), id, locale));
             } while (cursor.moveToNext());
         }
         cursor.close();
         return listof;
+    }
+    
+    public void update(TextItems item){
+        ContentValues c = new ContentValues();
+        c.put(UserDictionary.Words.APP_ID, appid.getPackageName());
+        c.put(UserDictionary.Words.LOCALE, item.getLocale());
+        c.put(UserDictionary.Words.WORD, item.getText());
+        c.put(UserDictionary.Words.FREQUENCY, item.getFrek());
+        c.put(UserDictionary.Words.SHORTCUT, item.getShort());
+        ContentResolver content = appid.getContentResolver();
+        content.update(
+            UserDictionary.Words.CONTENT_URI, c,
+            UserDictionary.Words._ID + " = ?", 
+            new String[]{String.valueOf(item.get_id())}
+            );
     }
 
     public void clearAllDictionary() {
@@ -78,12 +92,6 @@ public class UserDictionaryHelper {
                         UserDictionary.Words.CONTENT_URI,
                         UserDictionary.Words._ID + " = ?",
                         new String[] {String.valueOf(id)});
-    }
-
-    public void applytoAll() {
-        for (String locale : Locale.getISOLanguages()) {
-            applyToLocal(locale);
-        }
     }
 
     public boolean isMyInputMethodEnabled() {
@@ -103,7 +111,6 @@ public class UserDictionaryHelper {
     public InputMethodManager manager(){
         InputMethodManager inputMethodManager =
                 (InputMethodManager) appid.getSystemService(appid.INPUT_METHOD_SERVICE);
-        
         return inputMethodManager;
     }
 
@@ -113,13 +120,5 @@ public class UserDictionaryHelper {
 
     public void setAppid(Context appid) {
         this.appid = appid;
-    }
-
-    public TextItems getItem() {
-        return this.item;
-    }
-
-    public void setItem(TextItems item) {
-        this.item = item;
     }
 }
