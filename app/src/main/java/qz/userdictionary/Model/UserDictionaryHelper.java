@@ -4,15 +4,11 @@ import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.net.Uri;
 import android.provider.UserDictionary;
 import android.view.inputmethod.InputMethodInfo;
 import android.view.inputmethod.InputMethodManager;
 import java.util.ArrayList;
-import java.util.Dictionary;
 import java.util.List;
-import java.util.Locale;
-import qz.userdictionary.Model.TextItems;
 
 public class UserDictionaryHelper {
     Context appid;

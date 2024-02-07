@@ -1,77 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-     xmlns:android="http://schemas.android.com/apk/res/android"
-     xmlns:app="http://schemas.android.com/apk/res-auto"
-     android:layout_height="match_parent"
-     android:layout_width="match_parent"
-     android:padding="5dp"
-     android:orientation="vertical">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:padding="5dp"
+    android:orientation="vertical">
 
     <com.google.android.material.textfield.TextInputLayout
-         android:layout_height="wrap_content"
-         android:layout_width="match_parent"
-         android:hint="@string/input_panjang">
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:hint="@string/input_panjang">
 
         <com.google.android.material.textfield.TextInputEditText
-             android:layout_height="wrap_content"
-             android:layout_width="match_parent"
-             android:id="@+id/tergetAngka" />
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:inputType="number"
+            android:id="@+id/tergetAngka" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-         android:layout_height="wrap_content"
-         android:layout_width="match_parent"
-         android:hint="@string/input_keys">
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:hint="@string/input_keys">
 
         <com.google.android.material.textfield.TextInputEditText
-             android:layout_height="wrap_content"
-             android:layout_width="match_parent"
-             android:id="@+id/keys" />
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:id="@+id/keys" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/view_counter"
-         android:layout_height="wrap_content"
-         android:layout_width="match_parent"
-         android:hint="@string/input_words"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:hint="@string/input_words"
         app:counterEnabled="true"
-         android:elevation="5dp">
+        android:elevation="5dp">
 
         <com.google.android.material.textfield.TextInputEditText
-             android:layout_height="wrap_content"
-             android:layout_width="match_parent"
-             android:id="@+id/checkleng" />
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:id="@+id/checkleng" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
 
     <LinearLayout
-         android:layout_height="wrap_content"
-         android:layout_width="match_parent"
-         android:gravity="center"
-         android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <Button
-             android:layout_height="wrap_content"
-             android:layout_width="match_parent"
-             android:layout_weight="1"
-             android:text="Add"
-             android:id="@+id/add" />
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:text="Add"
+            android:id="@+id/add" />
 
         <Button
-             android:layout_height="wrap_content"
-             android:layout_width="match_parent"
-             android:layout_weight="1"
-             android:text="Delete All Dictionary"
-             android:id="@+id/clearAll" />
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:text="Delete All Dictionary"
+            android:id="@+id/clearAll" />
 
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-         android:layout_height="match_parent"
-         android:layout_width="match_parent"
-         android:id="@+id/recyclerView" />
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:id="@+id/recyclerView" />
 
 </LinearLayout>

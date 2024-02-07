@@ -3,16 +3,10 @@ package qz.userdictionary;
 import android.os.Handler;
 import android.os.Looper;
 import android.provider.UserDictionary;
-import java.util.Dictionary;
 import qz.userdictionary.ViewModel.Dialogs;
-import java.util.Dictionary;
 
-import android.content.Intent;
-import android.graphics.Color;
-import android.provider.Settings;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -78,9 +72,13 @@ public class MainActivity extends AppCompatActivity {
                 (v) -> {
                     String kata = binding.checkleng.getText().toString();
                     String keys = binding.keys.getText().toString();
-                
+
                     addData(
-                            new TextItems(kata, keys, "250",String.valueOf(UserDictionary.Words.LOCALE_TYPE_ALL)));
+                            new TextItems(
+                                    kata,
+                                    keys,
+                                    "250",
+                                    String.valueOf(UserDictionary.Words.LOCALE_TYPE_ALL)));
                 });
 
         binding.clearAll.setOnClickListener(
@@ -97,9 +95,9 @@ public class MainActivity extends AppCompatActivity {
 
     void addData(TextItems item) {
         textitem.clear();
-        
+
         dictionary.add(item);
-        
+
         textitem.addAll(dictionary.getListItem());
         adapter.notifyDataSetChanged();
     }

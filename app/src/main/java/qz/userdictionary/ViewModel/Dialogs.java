@@ -4,9 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.provider.Settings;
-import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
-import qz.userdictionary.ViewModel.Dialogs;
 import qz.userdictionary.R;
 
 public class Dialogs extends AlertDialog.Builder implements DialogInterface.OnClickListener {

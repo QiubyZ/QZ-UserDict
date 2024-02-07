@@ -1,21 +1,16 @@
 package qz.userdictionary.ViewModel;
 
-import android.content.Context;
 import android.database.ContentObserver;
 import android.net.Uri;
 import android.os.Handler;
-import android.os.Looper;
 import android.provider.UserDictionary;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.Toast;
 import androidx.recyclerview.widget.RecyclerView;
-import java.util.ArrayList;
 import java.util.List;
 import qz.userdictionary.Model.TextItems;
 import qz.userdictionary.Model.UserDictionaryHelper;
-import qz.userdictionary.ViewModel.DialogEdit;
-import qz.userdictionary.ViewModel.mAdpView;
 import qz.userdictionary.databinding.CostumViewTextitemBinding;
 
 public class mAdpView extends RecyclerView.Adapter<mAdpView.VH> {
