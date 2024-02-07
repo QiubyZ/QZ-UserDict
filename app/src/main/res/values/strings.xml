@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    
     <string name="app_name">QZ UserDict</string>
     <string name="dialog_title">Info</string>
     <string name="dialog_messages">Enable Virtual Keyboard QZ UserDict </string>
     <string name="dialog_goto">Goto Settings</string>
     <string name="dialog_dismis">Exit App</string>
-    <string name ="input_panjang">Panjang Character</string>
-    <string name="input_words">Kata</string>
-    <string name="input_keys">Shortcut</string>
+    <string name="deleteall">Delete All Dictionary</string>
+    <string name ="input_panjang">Lenght of Character</string>
+    <string name="input_words">Words</string>
+    <string name="input_keys">ShortCut Keys</string>
+    <string name="Add">Add</string>
     <string name="submit">Submit</string>
     <string name="cancel">Cancel</string>
     

@@ -58,14 +58,14 @@
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:layout_weight="1"
-            android:text="Add"
+            android:text="@string/Add"
             android:id="@+id/add" />
 
         <Button
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:layout_weight="1"
-            android:text="Delete All Dictionary"
+            android:text="@string/deleteall"
             android:id="@+id/clearAll" />
 
     </LinearLayout>
