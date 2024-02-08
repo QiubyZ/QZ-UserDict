@@ -16,6 +16,8 @@
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:inputType="number"
+            app:counterMaxLength="101"
+            app:errorEnabled="true"
             android:id="@+id/tergetAngka" />
 
     </com.google.android.material.textfield.TextInputLayout>

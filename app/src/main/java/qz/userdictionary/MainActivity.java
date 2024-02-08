@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
 import android.provider.UserDictionary;
+import android.widget.Toast;
 import qz.userdictionary.ViewModel.Dialogs;
 
 import android.text.Editable;
@@ -31,14 +32,14 @@ public class MainActivity extends AppCompatActivity {
 
         // Inflate and get instance of binding
         binding = ActivityMainBinding.inflate(getLayoutInflater());
-        
+
         // set content view to binding's root
         setContentView(binding.getRoot());
-        if(getIntent() != null) {
+        if (getIntent() != null) {
             String words = getIntent().getStringExtra(Intent.EXTRA_PROCESS_TEXT);
             binding.checkleng.setText(words);
         }
-        
+
         textitem = new ArrayList<TextItems>();
         adapter = new mAdpView(textitem, new Handler(Looper.getMainLooper()));
         dictionary = new UserDictionaryHelper(this);
@@ -46,12 +47,37 @@ public class MainActivity extends AppCompatActivity {
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
         binding.recyclerView.setAdapter(adapter);
 
-//        binding.keys.setText("coba");
-//        binding.checkleng.setText("makan ikan tapi nete");
-//        
+        //        binding.keys.setText("coba");
+        //        binding.checkleng.setText("makan ikan tapi nete");
+        //
         textitem.addAll(dictionary.getListItem());
         adapter.notifyDataSetChanged();
+        binding.tergetAngka.addTextChangedListener(
+                new TextWatcher() {
 
+                    @Override
+                    public void beforeTextChanged(
+                            CharSequence arg0, int arg1, int arg2, int arg3) {}
+
+                    @Override
+                    public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
+                    try {
+                    	if(Integer.valueOf(binding.tergetAngka.getText().toString()) != null){
+                            if(Integer.valueOf(binding.tergetAngka.getText().toString()) > 101){
+                                binding.tergetAngka.setError("Aturan Google panjang kata tidak lebih dari 101");
+                            }
+                        }
+                    } catch(Exception err) {
+                    	Toast.makeText(binding.getRoot().getContext(), err.toString(), Toast.LENGTH_LONG).show();
+                    }
+                        
+                    }
+                    @Override
+                    public void afterTextChanged(Editable arg0) {
+                        
+                    }
+                });
+        
         binding.checkleng.addTextChangedListener(
                 new TextWatcher() {
 
