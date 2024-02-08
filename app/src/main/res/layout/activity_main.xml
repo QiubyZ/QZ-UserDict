@@ -37,11 +37,11 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:hint="@string/input_words"
-        app:counterEnabled="true"
-        android:elevation="5dp">
+        app:counterEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:layout_height="wrap_content"
+            android:layout_height="250dp"
+            android:gravity="top|left"
             android:layout_width="match_parent"
             android:id="@+id/checkleng" />
 
