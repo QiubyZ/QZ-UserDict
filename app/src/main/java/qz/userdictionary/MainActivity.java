@@ -1,5 +1,6 @@
 package qz.userdictionary;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
 import android.provider.UserDictionary;
@@ -30,10 +31,14 @@ public class MainActivity extends AppCompatActivity {
 
         // Inflate and get instance of binding
         binding = ActivityMainBinding.inflate(getLayoutInflater());
-
+        
         // set content view to binding's root
         setContentView(binding.getRoot());
-
+        if(getIntent() != null) {
+            String words = getIntent().getStringExtra(Intent.EXTRA_PROCESS_TEXT);
+            binding.checkleng.setText(words);
+        }
+        
         textitem = new ArrayList<TextItems>();
         adapter = new mAdpView(textitem, new Handler(Looper.getMainLooper()));
         dictionary = new UserDictionaryHelper(this);

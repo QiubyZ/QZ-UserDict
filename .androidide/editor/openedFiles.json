@@ -1,35 +1,65 @@
 {
   "allFiles": [
     {
-      "file": "/storage/emulated/0/AndroidIDEProjects/GoogleDictionary/app/src/main/java/qz/userdictionary/MainActivity.java",
+      "file": "/storage/emulated/0/AndroidIDEProjects/GoogleDictionary/app/src/main/java/qz/userdictionary/ViewModel/CostumKeyBoard.java",
       "selection": {
         "end": {
-          "column": 54,
-          "index": 2064,
-          "line": 58
+          "column": 61,
+          "index": 678,
+          "line": 15
         },
         "start": {
-          "column": 54,
-          "index": 2064,
-          "line": 58
+          "column": 61,
+          "index": 678,
+          "line": 15
         }
       }
     },
     {
-      "file": "/storage/emulated/0/AndroidIDEProjects/GoogleDictionary/.github/workflows/android.yml",
+      "file": "/storage/emulated/0/AndroidIDEProjects/GoogleDictionary/app/src/main/AndroidManifest.xml",
       "selection": {
         "end": {
-          "column": 68,
-          "index": 200,
-          "line": 11
+          "column": 22,
+          "index": 1127,
+          "line": 30
         },
         "start": {
-          "column": 68,
-          "index": 200,
-          "line": 11
+          "column": 22,
+          "index": 1127,
+          "line": 30
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/GoogleDictionary/app/src/main/java/qz/userdictionary/MainActivity.java",
+      "selection": {
+        "end": {
+          "column": 42,
+          "index": 1154,
+          "line": 35
+        },
+        "start": {
+          "column": 42,
+          "index": 1154,
+          "line": 35
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/GoogleDictionary/app/src/main/java/qz/userdictionary/ViewModel/TeksAction.java",
+      "selection": {
+        "end": {
+          "column": 17,
+          "index": 595,
+          "line": 15
+        },
+        "start": {
+          "column": 17,
+          "index": 595,
+          "line": 15
         }
       }
     }
   ],
-  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/GoogleDictionary/.github/workflows/android.yml"
+  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/GoogleDictionary/app/src/main/AndroidManifest.xml"
 }
