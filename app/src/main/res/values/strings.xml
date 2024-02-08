@@ -11,6 +11,7 @@
     <string name="input_words">Words</string>
     <string name="input_keys">ShortCut Keys</string>
     <string name="Add">Add</string>
+    <string name="warning_lenght">Aturan Google panjang kata tidak lebih dari 101</string>
     <string name="submit">Submit</string>
     <string name="cancel">Cancel</string>
     

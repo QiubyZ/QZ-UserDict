@@ -1,0 +1,35 @@
+{
+  "allFiles": [
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/QZ UserDict/app/src/main/java/qz/userdictionary/MainActivity.java",
+      "selection": {
+        "end": {
+          "column": 56,
+          "index": 2323,
+          "line": 62
+        },
+        "start": {
+          "column": 56,
+          "index": 2323,
+          "line": 62
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/QZ UserDict/app/src/main/res/values/strings.xml",
+      "selection": {
+        "end": {
+          "column": 32,
+          "index": 627,
+          "line": 13
+        },
+        "start": {
+          "column": 18,
+          "index": 613,
+          "line": 13
+        }
+      }
+    }
+  ],
+  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/QZ UserDict/app/src/main/java/qz/userdictionary/MainActivity.java"
+}

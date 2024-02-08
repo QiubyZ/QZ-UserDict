@@ -18,13 +18,13 @@ import qz.userdictionary.Model.TextItems;
 import qz.userdictionary.Model.UserDictionaryHelper;
 import qz.userdictionary.ViewModel.mAdpView;
 import qz.userdictionary.databinding.ActivityMainBinding;
+import qz.userdictionary.R;
 
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
     ArrayList<TextItems> textitem;
     mAdpView adapter;
     UserDictionaryHelper dictionary;
-    final int plus = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,10 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
         binding.recyclerView.setAdapter(adapter);
-
-        //        binding.keys.setText("coba");
-        //        binding.checkleng.setText("makan ikan tapi nete");
-        //
+        
         textitem.addAll(dictionary.getListItem());
         adapter.notifyDataSetChanged();
         binding.tergetAngka.addTextChangedListener(
@@ -61,26 +58,22 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
-                    try {
-                    	if(Integer.valueOf(binding.tergetAngka.getText().toString()) != null){
-                            if(Integer.valueOf(binding.tergetAngka.getText().toString()) > 101){
-                                binding.tergetAngka.setError("Aturan Google panjang kata tidak lebih dari 101");
+                        String empt = binding.tergetAngka.getText().toString();
+                        if (!empt.isEmpty()) {
+                            if (!(Integer.valueOf(empt)> 101)) {
+                                binding.viewCounter.setCounterMaxLength(Integer.valueOf(empt));
+                                return;
                             }
+                            binding.tergetAngka.setError(getResources().getString(R.string.warning_lenght));
                         }
-                    } catch(Exception err) {
-                    	Toast.makeText(binding.getRoot().getContext(), err.toString(), Toast.LENGTH_LONG).show();
                     }
-                        
-                    }
+
                     @Override
-                    public void afterTextChanged(Editable arg0) {
-                        
-                    }
+                    public void afterTextChanged(Editable arg0) {}
                 });
-        
+
         binding.checkleng.addTextChangedListener(
                 new TextWatcher() {
-
                     @Override
                     public void beforeTextChanged(
                             CharSequence arg0, int arg1, int arg2, int arg3) {}
@@ -93,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
                             TargetAngka = binding.tergetAngka.getText().toString();
                         }
                         binding.viewCounter.setCounterMaxLength(Integer.valueOf(TargetAngka));
+                   
                     }
 
                     @Override
