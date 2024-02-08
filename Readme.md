@@ -12,10 +12,9 @@
 
 ## Instalasi
 
-Anda bisa mendapatkan aplikasinya didalam Release
+Anda bisa mendapatkan aplikasinya didalam [Release](https://github.com/QiubyZ/QZ-UserDict/releases)
 
-## App Demo
-Preview App
+## Preview App
 
 ![test](photo/test.gif)
 
