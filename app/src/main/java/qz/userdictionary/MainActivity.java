@@ -1,6 +1,8 @@
 package qz.userdictionary;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Handler;
 import android.os.Looper;
 import android.provider.UserDictionary;
@@ -18,13 +20,13 @@ import qz.userdictionary.Model.TextItems;
 import qz.userdictionary.Model.UserDictionaryHelper;
 import qz.userdictionary.ViewModel.mAdpView;
 import qz.userdictionary.databinding.ActivityMainBinding;
-import qz.userdictionary.R;
 
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
     ArrayList<TextItems> textitem;
     mAdpView adapter;
     UserDictionaryHelper dictionary;
+    int MAX_LENGT = 101;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +37,15 @@ public class MainActivity extends AppCompatActivity {
 
         // set content view to binding's root
         setContentView(binding.getRoot());
+
         if (getIntent() != null) {
             String words = getIntent().getStringExtra(Intent.EXTRA_PROCESS_TEXT);
-            binding.checkleng.setText(words);
+            if (words != null) {
+                if (words.length() > MAX_LENGT) {
+                    binding.viewCounter.setError(getString(R.string.warning_lenght));
+                }
+                binding.inputWords.setText(words);
+            }
         }
 
         textitem = new ArrayList<TextItems>();
@@ -46,10 +54,11 @@ public class MainActivity extends AppCompatActivity {
 
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
         binding.recyclerView.setAdapter(adapter);
-        
+
         textitem.addAll(dictionary.getListItem());
         adapter.notifyDataSetChanged();
-        binding.tergetAngka.addTextChangedListener(
+
+        binding.inputTergetAngka.addTextChangedListener(
                 new TextWatcher() {
 
                     @Override
@@ -58,35 +67,40 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
-                        String empt = binding.tergetAngka.getText().toString();
-                        if (!empt.isEmpty()) {
-                            if (!(Integer.valueOf(empt)> 101)) {
-                                binding.viewCounter.setCounterMaxLength(Integer.valueOf(empt));
-                                return;
-                            }
-                            binding.tergetAngka.setError(getResources().getString(R.string.warning_lenght));
-                        }
+                        String empt = binding.inputTergetAngka.getText().toString();
+                        checktargetAngka(empt);
                     }
 
                     @Override
                     public void afterTextChanged(Editable arg0) {}
                 });
 
-        binding.checkleng.addTextChangedListener(
+        binding.inputWords.addTextChangedListener(
                 new TextWatcher() {
                     @Override
-                    public void beforeTextChanged(
-                            CharSequence arg0, int arg1, int arg2, int arg3) {}
+                    public void beforeTextChanged(CharSequence t, int arg1, int arg2, int arg3) {}
 
                     @Override
                     public void onTextChanged(CharSequence text, int start, int before, int count) {
-                        String TargetAngka = binding.tergetAngka.getText().toString();
-                        if (TargetAngka.isEmpty() || TargetAngka.isBlank()) {
-                            binding.tergetAngka.setText("45");
-                            TargetAngka = binding.tergetAngka.getText().toString();
+                        String TargetAngka = binding.inputTergetAngka.getText().toString();
+                        if (TargetAngka.isBlank() || TargetAngka.isEmpty()) {
+                            TargetAngka = "45";
+                            binding.inputTergetAngka.setText(TargetAngka);
                         }
-                        binding.viewCounter.setCounterMaxLength(Integer.valueOf(TargetAngka));
-                   
+                        if (text.length() > MAX_LENGT) {
+                            binding.viewCounter.setError(
+                                    getString(R.string.warning_lenght));
+                        binding.viewCounter.setErrorTextColor(ColorStateList.valueOf(Color.RED));
+                        binding.viewCounter.setErrorIconTintList(ColorStateList.valueOf(Color.RED));
+                        }
+                        else if (text.length() > Integer.valueOf(TargetAngka)) {
+                            binding.viewCounter.setError(getString(R.string.warning_words));
+                            binding.viewCounter.setErrorTextColor(ColorStateList.valueOf(R.color.grey));
+                            binding.viewCounter.setErrorIconTintList(ColorStateList.valueOf(R.color.grey));
+                        }
+                        else {
+                            binding.viewCounter.setErrorEnabled(false);
+                        }
                     }
 
                     @Override
@@ -95,8 +109,8 @@ public class MainActivity extends AppCompatActivity {
 
         binding.add.setOnClickListener(
                 (v) -> {
-                    String kata = binding.checkleng.getText().toString();
-                    String keys = binding.keys.getText().toString();
+                    String kata = binding.inputWords.getText().toString();
+                    String keys = binding.inputKeys.getText().toString();
 
                     addData(
                             new TextItems(
@@ -110,6 +124,35 @@ public class MainActivity extends AppCompatActivity {
                 (v) -> {
                     ClearAllDictionary();
                 });
+        
+        binding.exportdict.setOnClickListener((v) -> {
+            pesan("TEST BUTTON");
+        });
+        binding.importdict.setOnClickListener((v) -> {
+            pesan("TEST BUTTON");
+        });
+    }
+    
+    String getStringSource(int s){
+        return getResources().getString(s);
+    }
+    void setWarningMSG(boolean activate) {
+        if (activate) {}
+    }
+
+    void checktargetAngka(String empt) {
+        if (!empt.isEmpty()) {
+            if (!(Integer.valueOf(empt) > MAX_LENGT)) {
+                binding.viewCounter.setCounterMaxLength(Integer.valueOf(empt));
+                binding.viewCounter.setErrorEnabled(false);
+
+            } else {
+                binding.viewCounter.setErrorEnabled(true);
+                binding.inputTergetAngka.setError(
+                        getResources().getString(R.string.warning_lenght));
+                binding.viewCounter.setError(getResources().getString(R.string.warning_lenght));
+            }
+        }
     }
 
     void ClearAllDictionary() {
@@ -127,6 +170,10 @@ public class MainActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged();
     }
 
+    void ExportDictionary() {}
+
+    void ImportDictionary() {}
+
     @Override
     protected void onStart() {
         check();
@@ -138,5 +185,8 @@ public class MainActivity extends AppCompatActivity {
         if (!dictionary.isMyInputMethodEnabled()) {
             new Dialogs(this);
         }
+    }
+    void pesan(String s){
+        Toast.makeText(this, s,Toast.LENGTH_SHORT).show();
     }
 }

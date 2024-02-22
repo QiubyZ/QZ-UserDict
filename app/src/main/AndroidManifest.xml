@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <manifest
+    xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.WRITE_USER_DICTIONARY" />
@@ -9,7 +9,7 @@
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
+    
     <application
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:requestLegacyExternalStorage="true"
@@ -30,10 +30,6 @@
                 <category
                     android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-            <meta-data
-                android:name="android.view.im"
-                android:resource="@xml/method" />
         </activity>
 
         <activity
@@ -41,7 +37,9 @@
             android:name=".ViewModel.TeksAction">
             <intent-filter>
                 <data android:mimeType="text/plain" />
+                <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.PROCESS_TEXT" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 

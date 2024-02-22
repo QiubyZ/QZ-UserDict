@@ -42,7 +42,6 @@ public class mAdpView extends RecyclerView.Adapter<mAdpView.VH> {
         TextItems item = items.get(posisi);
         
         UserDictionaryHelper dict = new UserDictionaryHelper(holder.bind.getRoot().getContext());
-
         holder.bind.shortcut.setText(item.getShort());
         holder.bind.freq.setText(String.valueOf(item.getFrek()));
         holder.bind.textitem.setText(item.getText());

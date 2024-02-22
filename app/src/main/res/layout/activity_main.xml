@@ -18,7 +18,7 @@
             android:inputType="number"
             app:counterMaxLength="101"
             app:errorEnabled="true"
-            android:id="@+id/tergetAngka" />
+            android:id="@+id/input_tergetAngka" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -29,8 +29,10 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:inputType="text"
             android:layout_width="match_parent"
-            android:id="@+id/keys" />
+            android:id="@+id/input_keys" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -44,8 +46,10 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_height="250dp"
             android:gravity="top|left"
+            app:counterMaxLength="101"
+            app:errorEnabled="true"
             android:layout_width="match_parent"
-            android:id="@+id/checkleng" />
+            android:id="@+id/input_words" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -57,6 +61,7 @@
         android:orientation="horizontal">
 
         <Button
+            android:layout_margin="2dp"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:layout_weight="1"
@@ -64,6 +69,7 @@
             android:id="@+id/add" />
 
         <Button
+            android:layout_margin="2dp"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:layout_weight="1"
@@ -71,6 +77,31 @@
             android:id="@+id/clearAll" />
 
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_margin="2dp"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:text="@string/exportDict"
+            android:id="@+id/exportdict" />
+
+        <Button
+           android:layout_margin="2dp"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:text="@string/importDict"
+            android:id="@+id/importdict" />
+
+    </LinearLayout>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_height="match_parent"
