@@ -24,4 +24,4 @@ android.nonTransitiveRClass=true
 
 #This for AndroidIde, if you have no problem with the new aapt2 by google, please remove it below
 #I am using build tools 34.0.4
-#android.aapt2FromMavenOverride=/data/data/com.termux/files/home/android-sdk/build-tools/34.0.4/aapt2
+android.aapt2FromMavenOverride=/data/data/com.termux/files/home/android-sdk/build-tools/34.0.4/aapt2
