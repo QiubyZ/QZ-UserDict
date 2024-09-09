@@ -11,5 +11,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Auto Release APK
-      uses: QiubyZ/apk-autorelease@Release-43
-    
+      uses: QiubyZ/apk-autorelease@v1
