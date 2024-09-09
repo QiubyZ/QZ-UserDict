@@ -5,8 +5,11 @@ on:
     branches: ["main"]
   pull_request:
     branches: [ "main" ]
-    
-    
+        
 jobs:
-    release-workflow:
-        uses: QiubyZ/ReleaseWorkflow/.github/workflows/main.yml@main
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Auto Release APK
+      uses: QiubyZ/apk-autorelease@v1
+    
