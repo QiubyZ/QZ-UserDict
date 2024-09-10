@@ -1,15 +1,17 @@
+name: Android Release
+
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: QiubyZ/apk-autorelease@v54
+      - uses: QiubyZ/apk-autorelease@v55# Ganti dengan username, nama repo, dan tag/branch
         with:
-          gradle_cmd: 'assembleDebug'
-          tag: 'Release'
-          body_release: 'Aplikasi ini otomatis dirilis.'
-          file_output: './app/build/outputs/apk/debug/app-debug.apk'
+          gradle_cmd: 'assembleRelease' # Ganti jika perlu
+          tag: 'Production'
+          body_release: 'Aplikasi versi produksi dirilis.'
+          file_output: './app/build/outputs/apk/release/app-release.apk' # Sesuaikan lokasi
