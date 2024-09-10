@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: QiubyZ/apk-autorelease@v53
+      - uses: QiubyZ/apk-autorelease@v54
         with:
           gradle_cmd: 'assembleDebug'
           tag: 'Release'
