@@ -1,14 +1,15 @@
-name: Android CI
-
 on:
   push:
-    branches: ["main"]
-  pull_request:
-    branches: [ "main" ]
-        
+    branches: [main]
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Auto Release APK
-      uses: QiubyZ/apk-autorelease@v51
+      - uses: actions/checkout@v3
+      - uses: QiubyZ/apk-autorelease@v51  # Panggil custom action
+        with:
+          gradle_cmd: 'assembleDebug'
+          tag: 'Release'
+          body_release: 'Aplikasi ini otomatis dirilis.'
+          file_output: './app/build/outputs/apk/debug/app-debug.apk'
