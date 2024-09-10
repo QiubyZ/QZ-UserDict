@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      
       - uses: QiubyZ/apk-autorelease@v65 # Ganti dengan username, nama repo, dan tag/branch
         with:
           gradle_cmd: 'assembleRelease' # Ganti jika perlu
