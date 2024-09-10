@@ -5,12 +5,13 @@ on:
     branches: [main]
 env:
   GITHUB_TOKEN: ${{secret.workflows_token}}
+  
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: QiubyZ/apk-autorelease@v62 # Ganti dengan username, nama repo, dan tag/branch
+      - uses: QiubyZ/apk-autorelease@v63 # Ganti dengan username, nama repo, dan tag/branch
         with:
           gradle_cmd: 'assembleRelease' # Ganti jika perlu
           tag: 'Production'
