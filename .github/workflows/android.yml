@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: QiubyZ/apk-autorelease@v51  # Panggil custom action
+      - uses: QiubyZ/apk-autorelease@v52  # Panggil custom action
         with:
           gradle_cmd: 'assembleDebug'
           tag: 'Release'
