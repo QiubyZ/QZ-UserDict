@@ -3,7 +3,8 @@ name: Android Release
 on:
   push:
     branches: [main]
-
+env:
+  GITHUB_TOKEN: ${{secret.workflows_token}}
 jobs:
   build:
     runs-on: ubuntu-latest
