@@ -14,7 +14,7 @@ jobs:
 
       - uses: QiubyZ/apk-autorelease@v75
         with:
-          gradle_cmd: 'assembleRelease' # this is will write apk filename /app-release-unsigned.apk
+          gradle_cmd: 'assembleDebug' # this is will write apk filename /app-release-unsigned.apk
           tag: 'Production'
           body_release: 'Aplikasi versi produksi dirilis.'
           file_output: './app/build/outputs/apk/release/app-release-unsigned.apk'
