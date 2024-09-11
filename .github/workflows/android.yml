@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: QiubyZ/apk-autorelease@v74
+      - uses: QiubyZ/apk-autorelease@v75
         with:
           gradle_cmd: 'assembleRelease' # this is will write apk filename /app-release-unsigned.apk
           tag: 'Production'
