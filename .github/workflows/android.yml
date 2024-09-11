@@ -12,15 +12,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: QiubyZ/apk-autorelease@v72
+      - uses: QiubyZ/apk-autorelease@v73
         with:
           gradle_cmd: 'assembleRelease' # this is will write apk filename /app-release-unsigned.apk
           tag: 'Production'
           body_release: 'Aplikasi versi produksi dirilis.'
           file_output: './app/build/outputs/apk/release/app-release-unsigned.apk'
-          # Sesuaikan lokasi
-          
-      - name: CHECK RESULT *.APK
-        run: ls -l -a ./app/build/outputs/apk/release
-      
         
