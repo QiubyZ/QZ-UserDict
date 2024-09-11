@@ -7,8 +7,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
+    #permissions:
+      #contents: write
     steps:
       - uses: actions/checkout@v3
 
@@ -18,7 +18,6 @@ jobs:
           tag: 'Production'
           body_release: 'Aplikasi versi produksi dirilis.'
           file_output: './app/build/outputs/apk/debug/app-debug.apk'
-      - name: Chek Repo
-        run: ls -l -a ./app/build/outputs/apk
+          
         
 
