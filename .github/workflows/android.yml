@@ -17,8 +17,8 @@ jobs:
           gradle_cmd: 'assembleDebug' # this is will write apk filename /app-release-unsigned.apk
           tag: 'Production'
           body_release: 'Aplikasi versi produksi dirilis.'
-          file_output: './app/build/outputs/apk/release/app-release.apk'
+          file_output: './app/build/outputs/apk/debug/app-debug.apk'
       - name: Chek Repo
-        run: ls -l -a ./app/build/outputs/apk/release
+        run: ls -l -a ./app/build/outputs/apk
         
 
