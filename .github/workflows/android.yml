@@ -12,12 +12,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: QiubyZ/apk-autorelease@v71 # Ganti dengan username, nama repo, dan tag/branch
+      - uses: QiubyZ/apk-autorelease@v72
         with:
-          gradle_cmd: 'assembleRelease' # Ganti jika perlu
+          gradle_cmd: 'assembleRelease' # this is will write apk filename /app-release-unsigned.apk
           tag: 'Production'
           body_release: 'Aplikasi versi produksi dirilis.'
-          file_output: './app/build/outputs/apk/release/app-release.apk'
+          file_output: './app/build/outputs/apk/release/app-release-unsigned.apk'
           # Sesuaikan lokasi
           
       - name: CHECK RESULT *.APK
