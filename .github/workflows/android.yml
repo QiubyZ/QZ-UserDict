@@ -21,6 +21,6 @@ jobs:
           # Sesuaikan lokasi
           
       - name: CHECK RESULT *.APK
-        run: ls -l
+        run: ls -l -a
       
         
