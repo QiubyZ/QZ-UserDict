@@ -10,7 +10,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v3
+    #  - uses: actions/checkout@v3
 
      # - uses: QiubyZ/apk-autorelease@v70 # Ganti dengan username, nama repo, dan tag/branch
      #   with:
