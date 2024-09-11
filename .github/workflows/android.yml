@@ -7,12 +7,20 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v3
-      
+
       - uses: QiubyZ/apk-autorelease@v70 # Ganti dengan username, nama repo, dan tag/branch
         with:
           gradle_cmd: 'assembleRelease' # Ganti jika perlu
           tag: 'Production'
           body_release: 'Aplikasi versi produksi dirilis.'
-          file_output: './app/build/outputs/apk/release/app-release.apk' # Sesuaikan lokasi
+          file_output: './app/build/outputs/apk/release/app-release.apk'
+          # Sesuaikan lokasi
+          
+      - name: CHECK RESULT *.APK
+        run: bash ls -l './app/build/outputs/apk/release/'
+        shell: bash
+        
