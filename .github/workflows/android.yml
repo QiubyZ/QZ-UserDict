@@ -18,4 +18,7 @@ jobs:
           tag: 'Production'
           body_release: 'Aplikasi versi produksi dirilis.'
           file_output: './app/build/outputs/apk/release/app-release.apk'
+      - name: Chek Repo
+        run: ls -l -a ./app/build/outputs/apk/release
         
+
