@@ -21,6 +21,6 @@ jobs:
           # Sesuaikan lokasi
           
       - name: CHECK RESULT *.APK
-        run: ls -l './app/build/outputs/apk/release/'
+        run: ls -l
       
         
