@@ -1,17 +1,21 @@
 package qz.userdictionary;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Handler;
 import android.os.Looper;
 import android.provider.UserDictionary;
+import android.widget.ScrollView;
 import android.widget.Toast;
 import qz.userdictionary.ViewModel.Dialogs;
 
 import android.text.Editable;
 import android.text.TextWatcher;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.ScrollingView;
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -63,7 +67,8 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void beforeTextChanged(
-                            CharSequence arg0, int arg1, int arg2, int arg3) {}
+                            CharSequence arg0, int arg1, int arg2, int arg3) {
+                    }
 
                     @Override
                     public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
@@ -72,13 +77,15 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void afterTextChanged(Editable arg0) {}
+                    public void afterTextChanged(Editable arg0) {
+                    }
                 });
 
         binding.inputWords.addTextChangedListener(
                 new TextWatcher() {
                     @Override
-                    public void beforeTextChanged(CharSequence t, int arg1, int arg2, int arg3) {}
+                    public void beforeTextChanged(CharSequence t, int arg1, int arg2, int arg3) {
+                    }
 
                     @Override
                     public void onTextChanged(CharSequence text, int start, int before, int count) {
@@ -90,21 +97,20 @@ public class MainActivity extends AppCompatActivity {
                         if (text.length() > MAX_LENGT) {
                             binding.viewCounter.setError(
                                     getString(R.string.warning_lenght));
-                        binding.viewCounter.setErrorTextColor(ColorStateList.valueOf(Color.RED));
-                        binding.viewCounter.setErrorIconTintList(ColorStateList.valueOf(Color.RED));
-                        }
-                        else if (text.length() > Integer.valueOf(TargetAngka)) {
+                            binding.viewCounter.setErrorTextColor(ColorStateList.valueOf(Color.RED));
+                            binding.viewCounter.setErrorIconTintList(ColorStateList.valueOf(Color.RED));
+                        } else if (text.length() > Integer.valueOf(TargetAngka)) {
                             binding.viewCounter.setError(getString(R.string.warning_words));
                             binding.viewCounter.setErrorTextColor(ColorStateList.valueOf(R.color.grey));
                             binding.viewCounter.setErrorIconTintList(ColorStateList.valueOf(R.color.grey));
-                        }
-                        else {
+                        } else {
                             binding.viewCounter.setErrorEnabled(false);
                         }
                     }
 
                     @Override
-                    public void afterTextChanged(Editable arg0) {}
+                    public void afterTextChanged(Editable arg0) {
+                    }
                 });
 
         binding.add.setOnClickListener(
@@ -124,20 +130,22 @@ public class MainActivity extends AppCompatActivity {
                 (v) -> {
                     ClearAllDictionary();
                 });
-        
+
         binding.exportdict.setOnClickListener((v) -> {
-            pesan("TEST BUTTON");
+            ExportDictionary();
         });
         binding.importdict.setOnClickListener((v) -> {
-            pesan("TEST BUTTON");
+            ImportDictionary();
         });
     }
-    
-    String getStringSource(int s){
+
+    String getStringSource(int s) {
         return getResources().getString(s);
     }
+
     void setWarningMSG(boolean activate) {
-        if (activate) {}
+        if (activate) {
+        }
     }
 
     void checktargetAngka(String empt) {
@@ -156,9 +164,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void ClearAllDictionary() {
-        dictionary.clearAllDictionary();
-        textitem.clear();
-        adapter.notifyDataSetChanged();
+        AlertDialog.Builder build = new AlertDialog.Builder(this);
+        build.setTitle("!Warning!")
+                .setMessage("Delete All UserDictionary ?")
+                .setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        dictionary.clearAllDictionary();
+                        textitem.clear();
+                        adapter.notifyDataSetChanged();
+
+                    };
+                });
+        build.create();
+        build.show();
+
     }
 
     void addData(TextItems item) {
@@ -170,9 +189,13 @@ public class MainActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged();
     }
 
-    void ExportDictionary() {}
+    void ExportDictionary() {
+        pesan("Export Button Test");
+    }
 
-    void ImportDictionary() {}
+    void ImportDictionary() {
+        pesan("Import dictionary Test");
+    }
 
     @Override
     protected void onStart() {
@@ -186,7 +209,8 @@ public class MainActivity extends AppCompatActivity {
             new Dialogs(this);
         }
     }
-    void pesan(String s){
-        Toast.makeText(this, s,Toast.LENGTH_SHORT).show();
+
+    void pesan(String s) {
+        Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
     }
 }

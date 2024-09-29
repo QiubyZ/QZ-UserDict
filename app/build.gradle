@@ -6,7 +6,6 @@ plugins {
 android {
     namespace 'qz.userdictionary'
     compileSdk 34
-    //buildToolsVersion "34.0.4"
     defaultConfig {
         applicationId "qz.userdictionary"
         minSdk 21
