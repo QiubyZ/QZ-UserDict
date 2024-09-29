@@ -7,6 +7,16 @@
     android:padding="5dp"
     android:orientation="vertical">
 
+    <android.widget.ScrollView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="vertical">
+        
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
     <com.google.android.material.textfield.TextInputLayout
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
@@ -53,9 +63,8 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-
     <LinearLayout
-        android:layout_height="wrap_content"
+android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:gravity="center"
         android:orientation="horizontal">
@@ -107,5 +116,11 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:id="@+id/recyclerView" />
+
+
+
+            
+        </LinearLayout>
+    </android.widget.ScrollView>
 
 </LinearLayout>
