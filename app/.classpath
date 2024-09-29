@@ -9,13 +9,13 @@
 	<classpathentry kind="lib" path="/data/data/com.termux/files/home/.gradle/caches/8.10/transforms/2052529a1758eac7c07d0d3bf4786380/transformed/appcompat-1.6.1-api.jar"/>
 	<classpathentry kind="lib" path="/data/data/com.termux/files/home/.gradle/caches/8.10/transforms/484239302f18885c3aaea93fbe105024/transformed/appcompat-resources-1.6.1-api.jar"/>
 	<classpathentry kind="lib" path="/data/data/com.termux/files/home/.gradle/caches/8.10/transforms/70981a8758601b6fd7bdf8431961d729/transformed/cardview-1.0.0-api.jar"/>
-	<classpathentry kind="lib" path="/data/data/com.termux/files/home/Belajar/Kotlin/QZ-UserDict/app/build/intermediates/javac/debug/classes"/>
-	<classpathentry kind="lib" path="/data/data/com.termux/files/home/Belajar/Kotlin/QZ-UserDict/app/build/intermediates/javac/debugUnitTest/classes"/>
 	<classpathentry kind="lib" path="/data/data/com.termux/files/home/Belajar/Kotlin/QZ-UserDict/app/build/intermediates/javac/releaseUnitTest/classes"/>
-	<classpathentry kind="lib" path="/data/data/com.termux/files/home/Belajar/Kotlin/QZ-UserDict/app/build/intermediates/compile_app_classes_jar/debug/classes.jar"/>
-	<classpathentry kind="lib" path="/data/data/com.termux/files/home/Belajar/Kotlin/QZ-UserDict/app/build/intermediates/compile_app_classes_jar/release/classes.jar"/>
 	<classpathentry kind="lib" path="/data/data/com.termux/files/home/Belajar/Kotlin/QZ-UserDict/app/build/intermediates/javac/release/classes"/>
+	<classpathentry kind="lib" path="/data/data/com.termux/files/home/Belajar/Kotlin/QZ-UserDict/app/build/intermediates/javac/debug/classes"/>
 	<classpathentry kind="lib" path="/data/data/com.termux/files/home/Belajar/Kotlin/QZ-UserDict/app/build/intermediates/javac/debugAndroidTest/classes"/>
+	<classpathentry kind="lib" path="/data/data/com.termux/files/home/Belajar/Kotlin/QZ-UserDict/app/build/intermediates/compile_app_classes_jar/release/classes.jar"/>
+	<classpathentry kind="lib" path="/data/data/com.termux/files/home/Belajar/Kotlin/QZ-UserDict/app/build/intermediates/compile_app_classes_jar/debug/classes.jar"/>
+	<classpathentry kind="lib" path="/data/data/com.termux/files/home/Belajar/Kotlin/QZ-UserDict/app/build/intermediates/javac/debugUnitTest/classes"/>
 	<classpathentry kind="lib" path="/data/data/com.termux/files/home/.gradle/caches/modules-2/files-2.1/androidx.collection/collection/1.1.0/1f27220b47669781457de0d600849a5de0e89909/collection-1.1.0.jar"/>
 	<classpathentry kind="lib" path="/data/data/com.termux/files/home/.gradle/caches/8.10/transforms/7cd90e4e83d31039e2e1fbd966e60bd5/transformed/constraintlayout-2.1.4-api.jar"/>
 	<classpathentry kind="lib" path="/data/data/com.termux/files/home/.gradle/caches/8.10/transforms/82daca352ecb1e1dd9bcc505f61cf979/transformed/coordinatorlayout-1.1.0-api.jar"/>
@@ -51,8 +51,8 @@
 	<classpathentry kind="lib" path="/data/data/com.termux/files/home/.gradle/caches/8.10/transforms/21cff62acb7de3ca64e88b55f2cdc9cf/transformed/material-1.9.0-api.jar"/>
 	<classpathentry kind="lib" path="/data/data/com.termux/files/home/.gradle/caches/8.10/transforms/56fb49c3fc8238427e0c711c260c8d80/transformed/print-1.0.0-api.jar"/>
 	<classpathentry kind="lib" path="/data/data/com.termux/files/home/Belajar/Kotlin/QZ-UserDict/app/build/intermediates/compile_and_runtime_not_namespaced_r_class_jar/release/R.jar"/>
-	<classpathentry kind="lib" path="/data/data/com.termux/files/home/Belajar/Kotlin/QZ-UserDict/app/build/intermediates/compile_and_runtime_not_namespaced_r_class_jar/debug/R.jar"/>
 	<classpathentry kind="lib" path="/data/data/com.termux/files/home/Belajar/Kotlin/QZ-UserDict/app/build/intermediates/compile_and_runtime_not_namespaced_r_class_jar/debugAndroidTest/R.jar"/>
+	<classpathentry kind="lib" path="/data/data/com.termux/files/home/Belajar/Kotlin/QZ-UserDict/app/build/intermediates/compile_and_runtime_not_namespaced_r_class_jar/debug/R.jar"/>
 	<classpathentry kind="lib" path="/data/data/com.termux/files/home/.gradle/caches/8.10/transforms/f317a655b30ad2fc7a6d1f2ed0e8382f/transformed/recyclerview-1.1.0-api.jar"/>
 	<classpathentry kind="lib" path="/data/data/com.termux/files/home/.gradle/caches/8.10/transforms/d39fd03069a89f00fff705c3f9e9c879/transformed/savedstate-1.2.0-api.jar"/>
 	<classpathentry kind="lib" path="/data/data/com.termux/files/home/.gradle/caches/8.10/transforms/9fc7e15af6fdb069677e559f26d99249/transformed/transition-1.2.0-api.jar"/>
