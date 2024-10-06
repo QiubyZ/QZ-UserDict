@@ -23,7 +23,8 @@
 
         <activity
             android:name="MainActivity"
-            android:exported="true">
+            android:exported="true"
+            >
             <intent-filter>
                 <action
                     android:name="android.intent.action.MAIN" />
@@ -32,7 +33,7 @@
             </intent-filter>
         </activity>
 
-        <activity
+        <activity 
             android:exported="true"
             android:name=".ViewModel.TeksAction">
             <intent-filter>

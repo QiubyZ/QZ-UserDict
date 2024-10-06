@@ -15,7 +15,6 @@ import qz.userdictionary.ViewModel.Dialogs;
 import android.text.Editable;
 import android.text.TextWatcher;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.ScrollingView;
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -45,10 +44,31 @@ public class MainActivity extends AppCompatActivity {
         if (getIntent() != null) {
             String words = getIntent().getStringExtra(Intent.EXTRA_PROCESS_TEXT);
             if (words != null) {
-                if (words.length() > MAX_LENGT) {
-                    binding.viewCounter.setError(getString(R.string.warning_lenght));
+                if (words.contains(":")) {
+                    String[] keys = words.split(":");
+                    if (keys.length == 2) {
+                        pesan(String.format("Add keys %s dan %s ", keys[0], keys[1]));
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                new UserDictionaryHelper(binding.getRoot().getContext()).add(
+                                        new TextItems(
+                                                keys[1].toString(),
+                                                keys[0].toString(),
+                                                "250",
+                                                String.valueOf(UserDictionary.Words.LOCALE_TYPE_ALL)));
+                            }
+                        }).start();
+                        finish();
+                    }
+
+                } else {
+                    if (words.length() > MAX_LENGT) {
+                        binding.viewCounter.setError(getString(R.string.warning_lenght));
+                    }
+                    binding.inputWords.setText(words);
                 }
-                binding.inputWords.setText(words);
+
             }
         }
 
@@ -182,9 +202,7 @@ public class MainActivity extends AppCompatActivity {
 
     void addData(TextItems item) {
         textitem.clear();
-
         dictionary.add(item);
-
         textitem.addAll(dictionary.getListItem());
         adapter.notifyDataSetChanged();
     }
@@ -201,7 +219,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         check();
         super.onStart();
-        // TODO: Implement this method
     }
 
     void check() {
