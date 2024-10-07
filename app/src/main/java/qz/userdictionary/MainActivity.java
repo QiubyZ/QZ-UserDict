@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     mAdpView adapter;
     UserDictionaryHelper dictionary;
     int MAX_LENGT = 101;
+    public static String WORD_KEYS = ":";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,23 +45,23 @@ public class MainActivity extends AppCompatActivity {
         if (getIntent() != null) {
             String words = getIntent().getStringExtra(Intent.EXTRA_PROCESS_TEXT);
             if (words != null) {
-                if (words.contains(":")) {
-                    String[] keys = words.split(":");
-                    if (keys.length == 2) {
-                        pesan(String.format("Add keys %s dan %s ", keys[0], keys[1]));
-                        new Thread(new Runnable() {
-                            @Override
-                            public void run() {
-                                new UserDictionaryHelper(binding.getRoot().getContext()).add(
-                                        new TextItems(
-                                                keys[1].toString(),
-                                                keys[0].toString(),
-                                                "250",
-                                                String.valueOf(UserDictionary.Words.LOCALE_TYPE_ALL)));
-                            }
-                        }).start();
-                        finish();
-                    }
+                if (words.contains(WORD_KEYS)) {
+                    int firstColonIndex = words.indexOf(":");
+                    String key1 = words.substring(0, firstColonIndex);
+                    String key2 = words.substring(firstColonIndex + 1);
+                    pesan(String.format("Add keys %s dan %s ", key1, key2));
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            new UserDictionaryHelper(binding.getRoot().getContext()).add(
+                                    new TextItems(
+                                            key2,
+                                            key1,
+                                            "250",
+                                            String.valueOf(UserDictionary.Words.LOCALE_TYPE_ALL)));
+                        }
+                    }).start();
+                    finish();
 
                 } else {
                     if (words.length() > MAX_LENGT) {
