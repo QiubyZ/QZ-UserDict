@@ -16,7 +16,11 @@ jobs:
         with:
           gradle_cmd: 'assembleDebug' # this is will write apk filename /app-release-unsigned.apk
           tag: 'Production'
-          body_release: 'Aplikasi versi produksi dirilis.'
+          body_release: |
+            "* add direct input of keys and values
+               example: 
+               t:test
+            "
           file_output: './app/build/outputs/apk/debug/app-debug.apk'
           
         
