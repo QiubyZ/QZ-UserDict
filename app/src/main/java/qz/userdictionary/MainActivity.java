@@ -36,8 +36,6 @@ public class MainActivity extends AppCompatActivity {
     int MAX_LENGT = 101;
     public static String WORD_KEYS = ":";
 
-    public static String WORD_KEYS = ":";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,20 +79,6 @@ public class MainActivity extends AppCompatActivity {
                         }).start();
 
                     }
-
-                    pesan(String.format("Add keys %s dan %s ", key1, key2));
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            new UserDictionaryHelper(binding.getRoot().getContext()).add(
-                                    new TextItems(
-                                            key2,
-                                            key1,
-                                            "250",
-                                            String.valueOf(UserDictionary.Words.LOCALE_TYPE_ALL)));
-                        }
-                    }).start();
-
                     finish();
 
                 } else {
