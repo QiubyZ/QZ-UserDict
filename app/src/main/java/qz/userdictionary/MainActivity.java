@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     mAdpView adapter;
     UserDictionaryHelper dictionary;
     int MAX_LENGT = 101;
+    public static String WORD_KEYS = ":";
 
     public static String WORD_KEYS = ":";
 
@@ -55,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
                     int firstColonIndex = words.indexOf(":");
                     String key1 = words.substring(0, firstColonIndex);
                     String key2 = words.substring(firstColonIndex + 1);
+
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                         Data.Builder dataBuilder = new Data.Builder();
                         dataBuilder.putString("key1", key1);
@@ -79,6 +81,20 @@ public class MainActivity extends AppCompatActivity {
                         }).start();
 
                     }
+
+                    pesan(String.format("Add keys %s dan %s ", key1, key2));
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            new UserDictionaryHelper(binding.getRoot().getContext()).add(
+                                    new TextItems(
+                                            key2,
+                                            key1,
+                                            "250",
+                                            String.valueOf(UserDictionary.Words.LOCALE_TYPE_ALL)));
+                        }
+                    }).start();
+
                     finish();
 
                 } else {
