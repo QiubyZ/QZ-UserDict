@@ -62,5 +62,10 @@
 	<classpathentry kind="lib" path="/data/data/com.termux/files/home/.gradle/caches/8.10/transforms/7c392bbeafcdeb9af33a42416f56b306/transformed/viewbinding-8.1.0-api.jar"/>
 	<classpathentry kind="lib" path="/data/data/com.termux/files/home/.gradle/caches/8.10/transforms/8490cc7984e3490f6c117f6851284e1f/transformed/viewpager-1.0.0-api.jar"/>
 	<classpathentry kind="lib" path="/data/data/com.termux/files/home/.gradle/caches/8.10/transforms/44a6f23cfde3f7ad4b602fd1a40d2275/transformed/viewpager2-1.0.0-api.jar"/>
+	<classpathentry kind="lib" path="/data/data/com.termux/files/home/.gradle/caches/modules-2/files-2.1/androidx.work/work-runtime/2.9.1/82cdda504d93e6f71464e4d2a74961e0b0ac709f/work-runtime-2.9.1.jar"/>
+	<classpathentry kind="lib" path="/data/data/com.termux/files/home/.gradle/caches/modules-2/files-2.1"/>
+	<classpathentry kind="lib" path="/data/data/com.termux/files/home/.gradle/caches/modules-2/files-2.1/androidx.concurrent/concurrent-futures/1.2.0/6a1dfd69226e148898410721f4b14315343d1429/concurrent-futures-1.2.0.jar"/>
+
+	<classpathentry kind="lib" path="/data/data/com.termux/files/home/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/33.3.1-android/36162b3b4e9df67dae90db62a2c54616ca42c1bd/guava-33.3.1-android.jar"/>	
 	<classpathentry kind="lib" path="."/>
 </classpath>
