@@ -32,15 +32,14 @@
             </intent-filter>
         </activity>
 
-        <activity 
+        <activity
+            android:icon="@mipmap/ic_launcher"
             android:exported="true"
             android:name=".ViewModel.TeksAction">
             <intent-filter>
                 <data android:mimeType="text/plain" />
-                <action android:name="android.intent.action.VIEW" />
-                <action android:name="android.intent.action.PROCESS_TEXT" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
+              <action android:name="android.intent.action.PROCESS_TEXT" />
+           </intent-filter>
         </activity>
 
         <service
