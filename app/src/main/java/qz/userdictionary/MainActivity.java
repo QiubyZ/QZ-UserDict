@@ -15,6 +15,7 @@ import qz.userdictionary.ViewModel.Dialogs;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Build;
 import android.os.Bundle;
@@ -23,10 +24,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import java.util.ArrayList;
 import qz.userdictionary.Model.TextItems;
 import qz.userdictionary.Model.UserDictionaryHelper;
-import qz.userdictionary.Service.AddItemOnService;
 import qz.userdictionary.ViewModel.mAdpView;
 import qz.userdictionary.databinding.ActivityMainBinding;
-import androidx.work.*;
 
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
@@ -34,66 +33,26 @@ public class MainActivity extends AppCompatActivity {
     mAdpView adapter;
     UserDictionaryHelper dictionary;
     int MAX_LENGT = 101;
-    public static String WORD_KEYS = ":";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // Inflate and get instance of binding
         binding = ActivityMainBinding.inflate(getLayoutInflater());
-
-        // set content view to binding's root
         setContentView(binding.getRoot());
         createNotificationChannel();
 
-        if (getIntent() != null) {
-            String words = getIntent().getStringExtra(Intent.EXTRA_PROCESS_TEXT);
-            if (words != null) {
-                if (words.contains(WORD_KEYS)) {
-                    int firstColonIndex = words.indexOf(":");
-                    String key1 = words.substring(0, firstColonIndex);
-                    String key2 = words.substring(firstColonIndex + 1);
-
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                        Data.Builder dataBuilder = new Data.Builder();
-                        dataBuilder.putString("key1", key1);
-                        dataBuilder.putString("key2", key2);
-                        Data data = dataBuilder.build();
-                        OneTimeWorkRequest myWorkRequest = new OneTimeWorkRequest.Builder(AddItemOnService.class)
-                                .setInputData(data).build();
-                        WorkManager.getInstance(getApplicationContext()).enqueue(myWorkRequest);
-
-                    } else {
-                        pesan(String.format("Add keys %s:%s ", key1, key2));
-                        new Thread(new Runnable() {
-                            @Override
-                            public void run() {
-                                new UserDictionaryHelper(binding.getRoot().getContext()).add(
-                                        new TextItems(
-                                                key2,
-                                                key1,
-                                                "250",
-                                                String.valueOf(UserDictionary.Words.LOCALE_TYPE_ALL)));
-                            }
-                        }).start();
-
-                    }
-                    finish();
-
-                } else {
-                    if (words.length() > MAX_LENGT) {
-                        binding.viewCounter.setError(getString(R.string.warning_lenght));
-                    }
-                    binding.inputWords.setText(words);
-                }
-
-            }
-        }
 
         textitem = new ArrayList<TextItems>();
         adapter = new mAdpView(textitem, new Handler(Looper.getMainLooper()));
         dictionary = new UserDictionaryHelper(this);
+
+        String words = getIntent().getStringExtra("DATA");
+        if (words != null) {
+            if (words.length() > MAX_LENGT) {
+                binding.viewCounter.setError(getString(R.string.warning_lenght));
+            }
+            binding.inputWords.setText(words);
+        }
 
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
         binding.recyclerView.setAdapter(adapter);
@@ -152,23 +111,21 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
-        binding.add.setOnClickListener(
-                (v) -> {
-                    String kata = binding.inputWords.getText().toString();
-                    String keys = binding.inputKeys.getText().toString();
+        binding.add.setOnClickListener((v) -> {
+            String kata = binding.inputWords.getText().toString();
+            String keys = binding.inputKeys.getText().toString();
 
-                    addData(
-                            new TextItems(
-                                    kata,
-                                    keys,
-                                    "250",
-                                    String.valueOf(UserDictionary.Words.LOCALE_TYPE_ALL)));
-                });
+            addDataView(
+                    new TextItems(
+                            kata,
+                            keys,
+                            "250",
+                            String.valueOf(UserDictionary.Words.LOCALE_TYPE_ALL)));
+        });
 
-        binding.clearAll.setOnClickListener(
-                (v) -> {
-                    ClearAllDictionary();
-                });
+        binding.clearAll.setOnClickListener((v) -> {
+            ClearAllDictionary();
+        });
 
         binding.exportdict.setOnClickListener((v) -> {
             ExportDictionary();
@@ -180,13 +137,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            CharSequence name = "Channel Name"; // Nama yang ditampilkan ke pengguna
-            String description = "Channel Description"; // Deskripsi channel
-            int importance = NotificationManager.IMPORTANCE_DEFAULT; // Atur level pentingnya
+
+            CharSequence name = getTitle().toString();
+            String description = "Notification Of added Shortcut Keys";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
             NotificationChannel channel = new NotificationChannel("channel_id", name, importance);
             channel.setDescription(description);
-
-            // Registrasi channel dengan sistem
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
         }
@@ -233,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    void addData(TextItems item) {
+    void addDataView(TextItems item) {
         textitem.clear();
         dictionary.add(item);
         textitem.addAll(dictionary.getListItem());
