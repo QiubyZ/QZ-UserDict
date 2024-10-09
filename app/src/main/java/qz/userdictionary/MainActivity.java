@@ -40,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         createNotificationChannel();
+
+
         textitem = new ArrayList<TextItems>();
         adapter = new mAdpView(textitem, new Handler(Looper.getMainLooper()));
         dictionary = new UserDictionaryHelper(this);
