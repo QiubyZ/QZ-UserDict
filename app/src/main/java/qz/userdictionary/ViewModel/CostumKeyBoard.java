@@ -17,6 +17,5 @@ public class CostumKeyBoard extends InputMethodService {
     @Override
     public void onDisplayCompletions(CompletionInfo[] arg0) {
         super.onDisplayCompletions(arg0);
-        // TODO: Implement this method
     }
 }

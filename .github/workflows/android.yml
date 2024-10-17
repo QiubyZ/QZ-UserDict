@@ -8,20 +8,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
     #permissions:
-      #contents: write
+    #contents: write
     steps:
       - uses: actions/checkout@v3
 
       - uses: QiubyZ/apk-autorelease@v1
         with:
-          gradle_cmd: 'assembleDebug' # this is will write apk filename /app-release-unsigned.apk
-          tag: 'Production'
+          gradle_cmd: "assembleDebug" # this is will write apk filename /app-release-unsigned.apk
+          tag: "Production"
           body_release: |
-            "* add direct input of keys and values
+            * add direct input of keys and values
                example: 
                t:test
-            "
-          file_output: './app/build/outputs/apk/debug/app-debug.apk'
-          
-        
-
+            * Add Text Selection From Other App (WhatsApp and other)
+          file_output: "./app/build/outputs/apk/debug/app-debug.apk"
