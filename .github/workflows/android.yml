@@ -29,7 +29,7 @@ jobs:
         shell: bash
         
       - name: Build APK
-        run: bash ./gradlew ${{ inputs.gradle_cmd }} --stacktrace
+        run: bash ./gradlew assembleDebug --stacktrace
         shell: bash
       
       - name: Upload APK to Artifacts
