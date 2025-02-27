@@ -53,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
         binding.recyclerView.setAdapter(adapter);
         textitem.addAll(dictionary.getListItem());
         
-        adapter.
         binding.inputTergetAngka.addTextChangedListener(
                 new TextWatcher() {
 
