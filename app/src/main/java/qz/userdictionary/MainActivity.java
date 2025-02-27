@@ -51,10 +51,9 @@ public class MainActivity extends AppCompatActivity {
 
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
         binding.recyclerView.setAdapter(adapter);
-
         textitem.addAll(dictionary.getListItem());
-        adapter.notifyDataSetChanged();
-
+        
+        adapter.
         binding.inputTergetAngka.addTextChangedListener(
                 new TextWatcher() {
 
